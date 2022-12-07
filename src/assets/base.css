@@ -1,0 +1,55 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+@font-face {
+  font-family: "SHEPEL";
+  font-style: normal;
+  font-weight: 400;
+  src: local("SHEPEL"),
+    url("/src/assets/fonts/SHEPEL/SHEPEL.woff2") format("woff2"),
+    url("/src/assets/fonts/SHEPEL/SHEPEL.woff") format("woff");
+}
+
+@font-face {
+  font-family: "SArcade";
+  font-style: normal;
+  font-weight: 400;
+  src: local("SArcade"),
+    url("/src/assets/fonts/SArcade/SArcade.woff2") format("woff2"),
+    url("/src/assets/fonts/SArcade/SArcade.woff") format("woff");
+}
+
+@font-face {
+  font-family: "St_Sign normal";
+  font-style: normal;
+  font-weight: 400;
+  src: local("St.sign normal"),
+    url("/src/assets/fonts/St_Sign/St.Sign-Normal.woff2") format("woff2"),
+    url("/src/assets/fonts/St_Sign/St.Sign-Normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "St_Sign condensed";
+  font-style: normal;
+  font-weight: 400;
+  src: local("St.sign"),
+    url("/src/assets/fonts/St_Sign/St.Sign-Condensed.woff2") format("woff2"),
+    url("/src/assets/fonts/St_Sign/St.Sign-Condensed.woff") format("woff");
+}
