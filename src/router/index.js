@@ -4,7 +4,6 @@ import RegistrationView from "../views/RegistrationView.vue";
 import AuthorizationView from "../views/AuthorizationView.vue";
 import SettingsView from "../views/SettingsView.vue";
 import PurchasesView from "../views/PurchasesView.vue";
-import SearchGameView from "../views/SearchGameView.vue";
 import SearchRoomView from "../views/SearchRoomView.vue";
 import BlogView from "../views/BlogView.vue";
 
@@ -40,11 +39,6 @@ const router = createRouter({
       path: "/search-room",
       name: "search-room",
       component: SearchRoomView,
-    },
-    {
-      path: "/search-game",
-      name: "search-game",
-      component: SearchGameView,
     },
     {
       path: "/blog",

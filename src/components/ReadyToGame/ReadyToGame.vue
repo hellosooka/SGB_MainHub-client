@@ -9,7 +9,7 @@ import GameButton from "./GameButton.vue";
       <GameButton color="blue" link="/search-room" v-upper-case>
         найти комнтау
       </GameButton>
-      <GameButton color="red" link="/search-game" v-upper-case>
+      <GameButton color="red" link="/purchases" v-upper-case>
         создать комнату
       </GameButton>
     </div>

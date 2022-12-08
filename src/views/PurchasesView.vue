@@ -12,7 +12,6 @@ import GamesList from "../components/GamesList/GamesList.vue";
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 </style>
