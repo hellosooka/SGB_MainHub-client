@@ -1,5 +1,18 @@
-<script setup></script>
+<script setup>
+import GamesList from "../components/GamesList/GamesList.vue";
+</script>
 
 <template>
-  <div></div>
+  <div class="container">
+    <GamesList />
+  </div>
 </template>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>

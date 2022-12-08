@@ -19,7 +19,6 @@ const currentRoute = computed(() => route.name);
     >
       Покупки
     </router-link>
-    <hr class="line" />
     <router-link
       to="/settings"
       class="button"
@@ -68,17 +67,21 @@ const currentRoute = computed(() => route.name);
 .button {
   padding: 15px;
   transition: 150ms cubic-bezier(0.47, 0, 0.745, 0.715);
+  border: 2px solid #d9d9d9;
 }
 
 .button:hover {
   background-color: #d9d9d9;
+  border-color: #cccccc;
 }
 
 .purchases {
+  border-width: 2px 0px 2px 2px;
   border-radius: 12px 0px 0px 12px;
 }
 
 .nickname {
+  border-width: 2px 2px 2px 0px;
   border-radius: 0px 12px 12px 0px;
 }
 
@@ -96,10 +99,12 @@ const currentRoute = computed(() => route.name);
 .active {
   color: white;
   background: #1e2859;
+  border: 2px solid #111d5b;
 }
 
 .active:hover {
   background-color: #111d5b;
+  border-color: #0d1647;
 }
 
 @media (max-width: 768px) {

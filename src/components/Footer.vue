@@ -51,4 +51,15 @@
 .link:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 550px) {
+  .container {
+    justify-content: left;
+    height: 200px;
+  }
+  .links {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+}
 </style>

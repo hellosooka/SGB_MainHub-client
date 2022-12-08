@@ -22,6 +22,7 @@ import GameButton from "./GameButton.vue";
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 6vw;
 }
 .title {
   font-family: "SHEPEL";

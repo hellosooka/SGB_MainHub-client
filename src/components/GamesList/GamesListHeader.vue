@@ -8,7 +8,7 @@ const filterValue = ref("");
   <div class="container">
     <div class="header">
       <span v-upper-case class="title"> все игры </span>
-      <div>
+      <div class="button_container">
         <div class="form_radio_btn">
           <input
             id="radio-1"
@@ -33,7 +33,6 @@ const filterValue = ref("");
         </div>
       </div>
     </div>
-    <hr class="line" />
     <div class="search_container">
       <input placeholder="ПОИСК..." type="text" class="search_input" />
     </div>
@@ -47,12 +46,13 @@ const filterValue = ref("");
   align-items: baseline;
   justify-content: space-between;
 
-  padding: 0px 30px 0px 30px;
+  padding: 0px 25px 0px 25px;
+  margin: 0px 5px 0px 5px;
 }
 
 .title {
-  font-family: "SHEPEL";
-  font-size: 3vw;
+  font-family: "St_Sign condensed";
+  font-size: 60px;
 }
 
 .form_radio_btn {
@@ -67,51 +67,59 @@ const filterValue = ref("");
   cursor: pointer;
   padding: 3px 15px 0px 15px;
   line-height: 34px;
-  border: 3px solid black;
-  border-radius: 5px;
+  border: 3px solid gray;
+  border-radius: 15px;
   user-select: none;
   font-size: 25px;
 
-  color: black;
+  color: gray;
   background-color: white;
   font-family: "St_Sign condensed";
+
+  transition: 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* Checked */
 .form_radio_btn input[type="radio"]:checked + label {
   color: white;
-  background-color: #1e2859;
+  background-color: #760000;
+  border: none;
+  padding: 6px 18px 3px 18px;
 }
 
 /* Hover */
 .form_radio_btn label:hover {
-  text-decoration: underline;
+  border-width: 4px;
 }
 
-.line {
-  margin: 15px 73px;
-  background-color: black;
-  height: 5px;
-}
 .search_container {
   display: flex;
   justify-content: center;
+  margin-top: 2vw;
 }
 
 .search_input {
   width: 95%;
-  font-size: 32px;
-  padding: 5px;
-  border: 4px solid black;
+  font-size: 30px;
+  padding: 12px;
+  border: 2px solid #ebebeb;
+  border-radius: 15px;
+
+  transition: 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.search_input:focus {
+  padding: 15px;
 }
 
 .search_input::placeholder {
-  font-family: "SHEPEL";
+  font-family: "St_Sign normal";
 }
 
 @media (max-width: 650px) {
   .title {
-    font-size: 10vw;
+    font-size: 13vw;
+    margin-bottom: 2vw;
   }
   .header {
     flex-direction: column;
@@ -120,10 +128,13 @@ const filterValue = ref("");
     padding: 40px 0px 1vw 0px;
     margin-bottom: 2vw;
   }
+  .search_input {
+    margin-top: 10px;
+    font-size: 12px;
+  }
 
   .form_radio_btn label {
     font-size: 12px;
-    padding: 8px 8px 3px 8px;
     line-height: 20px;
   }
   .line {
