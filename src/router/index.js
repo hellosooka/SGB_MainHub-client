@@ -6,6 +6,8 @@ import SettingsView from "../views/SettingsView.vue";
 import PurchasesView from "../views/PurchasesView.vue";
 import SearchRoomView from "../views/SearchRoomView.vue";
 import BlogView from "../views/BlogView.vue";
+import PostView from "../views/PostView.vue";
+import GameView from "../views/GameView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,6 +38,11 @@ const router = createRouter({
       component: PurchasesView,
     },
     {
+      path: "/games/:id",
+      name: "game",
+      component: GameView,
+    },
+    {
       path: "/search-room",
       name: "search-room",
       component: SearchRoomView,
@@ -44,6 +51,11 @@ const router = createRouter({
       path: "/blog",
       name: "blog",
       component: BlogView,
+    },
+    {
+      path: "/blog/:post",
+      name: "post",
+      component: PostView,
     },
   ],
 });

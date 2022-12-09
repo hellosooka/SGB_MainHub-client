@@ -24,15 +24,17 @@ const compactTitle = computed(() => {
 </script>
 
 <template>
-  <div class="container">
-    <img
-      class="image"
-      src=" https://rgrfacilities.co.uk/gallery/blog/8278044.jpg "
-      alt=""
-    />
-    <span v-upper-case class="title"> {{ compactTitle }} </span>
-    <span class="description"> {{ compactDescription }} </span>
-  </div>
+  <router-link :to="`/blog/${props.id}`">
+    <div class="container">
+      <img
+        class="image"
+        src=" https://rgrfacilities.co.uk/gallery/blog/8278044.jpg "
+        alt=""
+      />
+      <span v-upper-case class="title"> {{ compactTitle }} </span>
+      <span class="description"> {{ compactDescription }} </span>
+    </div>
+  </router-link>
 </template>
 
 <style scoped>

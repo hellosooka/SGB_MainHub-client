@@ -1,7 +1,7 @@
 <script setup>
 import { usePostsStore } from "../../stores/posts.js";
 import PostCard from "./PostCard.vue";
-import { Carousel, Slide } from "vue3-carousel";
+import { Carousel, Slide, Pagination } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 import { ref } from "vue";
 
@@ -57,8 +57,12 @@ const postsStore = usePostsStore();
             class="carousel__item"
             :title="post.title"
             :description="post.description"
+            :id="post.id"
           />
         </Slide>
+        <template #addons>
+          <Pagination />
+        </template>
       </Carousel>
     </div>
   </div>

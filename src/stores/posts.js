@@ -24,5 +24,9 @@ export const usePostsStore = defineStore("posts", () => {
     },
   ]);
 
-  return { posts };
+  function getPostById(id) {
+    return posts.value.filter((post) => post.id === id);
+  }
+
+  return { posts, getPostById };
 });

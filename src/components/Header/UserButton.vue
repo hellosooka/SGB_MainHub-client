@@ -90,6 +90,8 @@ const currentRoute = computed(() => route.name);
   background: #760000;
   border-radius: 0px 12px 12px 0px;
   padding: 15px 20px;
+
+  border: 2px solid #610000;
 }
 
 .registration:hover {
