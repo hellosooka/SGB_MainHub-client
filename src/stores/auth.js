@@ -1,5 +1,6 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
+import axios from "axios";
 
 export const useAuthStore = defineStore("auth", () => {
   const isRegistering = ref(false);
@@ -7,7 +8,7 @@ export const useAuthStore = defineStore("auth", () => {
   const nickname = ref("NICKNAME");
   const token = ref("");
 
-  function registering() { }
+  const HOST = ref("http://localhost:7000");
 
   return { isRegistering, email, nickname };
 });

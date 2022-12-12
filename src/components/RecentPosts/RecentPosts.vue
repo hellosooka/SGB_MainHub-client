@@ -1,7 +1,7 @@
 <script setup>
 import { usePostsStore } from "../../stores/posts.js";
 import PostCard from "./PostCard.vue";
-import { Carousel, Slide, Pagination } from "vue3-carousel";
+import { Carousel, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 import { ref } from "vue";
 
@@ -42,13 +42,16 @@ const breakpoints = ref({
     itemsToShow: 3.6,
   },
 });
+
 const postsStore = usePostsStore();
 </script>
 
 <template>
-  <div class="container">
+  <div v-if="postsStore.posts.length != 0" class="container">
     <div class="header_container">
-      <router-link class="link" to="/blog" v-upper-case> все </router-link>
+      <router-link class="link" to="/blog" v-upper-case>
+        все новости
+      </router-link>
     </div>
     <div class="carousel_container">
       <Carousel :autoplay="5000" :breakpoints="breakpoints" :wrap-around="true">
@@ -58,11 +61,9 @@ const postsStore = usePostsStore();
             :title="post.title"
             :description="post.description"
             :id="post.id"
+            :imageLink="post.link"
           />
         </Slide>
-        <template #addons>
-          <Pagination />
-        </template>
       </Carousel>
     </div>
   </div>
@@ -81,6 +82,9 @@ const postsStore = usePostsStore();
 .carousel_container {
   width: 100vw;
 }
+.pagination {
+  align-items: center;
+}
 
 .link {
   font-family: "St_Sign condensed";
@@ -93,6 +97,9 @@ const postsStore = usePostsStore();
 }
 
 @media (max-width: 450px) {
+  .link {
+    font-size: 7vw;
+  }
   .header_container {
     padding: 10px 40px 10px 40px;
   }

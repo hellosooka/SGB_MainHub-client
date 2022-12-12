@@ -26,11 +26,7 @@ const compactTitle = computed(() => {
 <template>
   <router-link :to="`/blog/${props.id}`">
     <div class="container">
-      <img
-        class="image"
-        src=" https://rgrfacilities.co.uk/gallery/blog/8278044.jpg "
-        alt=""
-      />
+      <img class="image" :src="imageLink" alt="" />
       <span v-upper-case class="title"> {{ compactTitle }} </span>
       <span class="description"> {{ compactDescription }} </span>
     </div>

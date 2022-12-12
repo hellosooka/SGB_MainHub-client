@@ -1,5 +1,8 @@
 <script setup>
 import { computed, ref, watch } from "vue";
+import { useAuthStore } from "../stores/auth";
+
+const authStore = useAuthStore();
 
 const nickname = ref("");
 const email = ref("");
@@ -70,8 +73,8 @@ const isActive = computed(() => {
   font-family: "St_Sign normal";
 }
 .input {
-  padding: 8px;
-  font-size: 28px;
+  padding: 12px;
+  font-size: 25px;
   font-family: "St_Sign normal";
   border-radius: 10px;
   border: 2px solid #ebebeb;
