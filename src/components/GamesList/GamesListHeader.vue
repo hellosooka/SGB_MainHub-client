@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
+
+const emit = defineEmits(["filter"]);
 
 const filterValue = ref("");
+
+watch(filterValue, (count) => {
+  emit("filter", count);
+});
 </script>
 
 <template>
@@ -82,7 +88,7 @@ const filterValue = ref("");
 /* Checked */
 .form_radio_btn input[type="radio"]:checked + label {
   color: white;
-  background-color: #760000;
+  background-color: #e3bf00;
   border: none;
   padding: 6px 18px 3px 18px;
 }
@@ -105,11 +111,12 @@ const filterValue = ref("");
   border: 2px solid #ebebeb;
   border-radius: 15px;
 
-  transition: 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .search_input:focus {
   padding: 15px;
+  width: 100%;
 }
 
 .search_input::placeholder {
@@ -129,8 +136,7 @@ const filterValue = ref("");
     margin-bottom: 2vw;
   }
   .search_input {
-    margin-top: 10px;
-    font-size: 12px;
+    font-size: 20px;
   }
 
   .form_radio_btn label {

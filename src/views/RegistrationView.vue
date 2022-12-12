@@ -51,6 +51,7 @@ const isActive = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 30px;
 }
 .title {
   font-size: 50px;

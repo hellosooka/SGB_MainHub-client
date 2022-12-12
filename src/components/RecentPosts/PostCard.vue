@@ -52,8 +52,8 @@ const compactTitle = computed(() => {
 }
 
 .image:hover {
-  width: 645px;
-  height: 365px;
+  padding: 5px;
+  border-radius: 25px;
 }
 .title {
   color: #1e2859;
