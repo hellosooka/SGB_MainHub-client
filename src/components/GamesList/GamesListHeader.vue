@@ -123,6 +123,12 @@ watch(filterValue, (count) => {
   font-family: "St_Sign normal";
 }
 
+@media (max-width: 1000px) {
+  .search_input {
+    margin: 0px 25px;
+  }
+}
+
 @media (max-width: 650px) {
   .title {
     font-size: 13vw;
@@ -140,8 +146,8 @@ watch(filterValue, (count) => {
   }
 
   .form_radio_btn label {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: 22px;
+    line-height: 26px;
   }
   .line {
     display: none;

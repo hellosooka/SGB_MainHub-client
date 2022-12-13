@@ -18,4 +18,10 @@ const props = defineProps({
   border: 1px solid #1e2859;
   border-radius: 12px;
 }
+@media (max-width: 500px) {
+  .container {
+    font-size: 3vw;
+    padding: 1.2vw 2vw 1vw 2vw;
+  }
+}
 </style>

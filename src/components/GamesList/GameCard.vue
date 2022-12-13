@@ -69,7 +69,9 @@ const isBought = computed(() => {
 .tag_container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   column-gap: 10px;
+  row-gap: 10px;
   margin: 5px 0px 8px 5px;
 }
 
@@ -95,5 +97,51 @@ const isBought = computed(() => {
   font-family: "St_Sign condensed";
   font-size: 25px;
   margin: 15px;
+}
+
+@media (max-width: 1000px) {
+  .image {
+    width: 42vw;
+    height: 23.63vw;
+  }
+  .title {
+    font-size: 6vw;
+  }
+  .description {
+    font-size: 2.5vw;
+    margin-left: 2px;
+  }
+  .card_container {
+    padding: 15px;
+    margin: 5px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.5fr;
+    row-gap: 10px;
+  }
+}
+@media (max-width: 650px) {
+  .card_container {
+    width: 100%;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 0.5vw;
+  }
+  .image {
+    width: 64vw;
+    height: 36vw;
+  }
+  .title {
+    font-size: 8vw;
+  }
+  .content_container {
+    padding-left: 15px;
+  }
+  .tag_container {
+    margin: 5px 0px 3px 0px;
+    column-gap: 5px;
+  }
+  .price {
+    font-size: 4vw;
+    margin: 1.5vw;
+  }
 }
 </style>

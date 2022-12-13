@@ -16,7 +16,7 @@ const changeGames = (data) => {
 <template>
   <div class="container">
     <GamesListHeader @filter="changeGames" />
-    <div>
+    <div class="cards_container">
       <GameCard
         v-if="filterType == 'all'"
         v-for="game in gamesStore.allGames"
@@ -51,9 +51,23 @@ const changeGames = (data) => {
   justify-content: center;
 }
 
+@media (max-width: 1000px) {
+  .container {
+    width: 100%;
+  }
+  .cards_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 650px) {
+  .cards_container {
+    grid-template-columns: 1fr;
+  }
   .container {
     margin-top: 20px;
+    padding-bottom: 40px;
   }
 }
 </style>

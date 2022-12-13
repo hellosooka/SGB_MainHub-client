@@ -117,6 +117,29 @@ export const useGamesStore = defineStore("games", () => {
             tagId: 2,
           },
         },
+        {
+          id: 8,
+          title: "log",
+          createdAt: "2022-12-12T10:34:43.925Z",
+          updatedAt: "2022-12-12T10:34:43.925Z",
+          GameTags: {
+            id: 4,
+            gameId: 2,
+            tagId: 2,
+          },
+        },
+
+        {
+          id: 9,
+          title: "logfg",
+          createdAt: "2022-12-12T10:34:43.925Z",
+          updatedAt: "2022-12-12T10:34:43.925Z",
+          GameTags: {
+            id: 4,
+            gameId: 2,
+            tagId: 2,
+          },
+        },
       ],
     },
     {

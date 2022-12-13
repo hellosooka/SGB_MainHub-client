@@ -35,4 +35,11 @@ const props = defineProps({
   color: white;
   background-color: #1e2859;
 }
+
+@media (max-width: 1000px) {
+  .container {
+    font-size: 5vw;
+    padding: 2vw 5vw;
+  }
+}
 </style>
