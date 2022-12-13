@@ -31,7 +31,7 @@ const isBought = computed(() => {
       <div>
         <span class="title"> {{ title }} </span>
         <div class="tag_container">
-          <GameTag v-for="tag in tags" :title="tag.title" />
+          <GameTag v-for="tag in tags" :key="tag.id" :title="tag.title" />
         </div>
         <span class="description"> {{ description }} </span>
       </div>
@@ -56,6 +56,8 @@ const isBought = computed(() => {
 }
 .image {
   border-radius: 20px;
+  width: 40vw;
+  height: 22.5vw;
 }
 
 .content_container {

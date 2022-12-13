@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 
-const emit = defineEmits(["filter"]);
+const emit = defineEmits(["filter", "search"]);
 
 const filterValue = ref("");
+const searchQuery = ref("");
 
 watch(filterValue, (count) => {
   emit("filter", count);
+});
+
+watch(searchQuery, (count) => {
+  emit("search", count);
 });
 </script>
 
@@ -39,13 +44,18 @@ watch(filterValue, (count) => {
     </div>
   </div>
   <div class="search_container">
-    <input placeholder="ПОИСК..." type="text" class="search_input" />
+    <input
+      v-model="searchQuery"
+      placeholder="ПОИСК..."
+      type="text"
+      class="search_input"
+    />
   </div>
 </template>
 
 <style scoped>
 .header {
-  width: 100%;
+  width: 97%;
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -101,7 +111,8 @@ watch(filterValue, (count) => {
   display: flex;
   justify-content: center;
   margin-top: 2vw;
-  width: 97%;
+  width: 93%;
+  margin-bottom: 10px;
 }
 
 .search_input {
@@ -126,6 +137,7 @@ watch(filterValue, (count) => {
 @media (max-width: 1000px) {
   .search_input {
     margin: 0px 25px;
+    width: 150%;
   }
 }
 
