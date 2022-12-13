@@ -133,6 +133,10 @@ const isBought = computed(() => {
   .title {
     font-size: 8vw;
   }
+
+  .description {
+    font-size: 4vw;
+  }
   .content_container {
     padding-left: 15px;
   }
