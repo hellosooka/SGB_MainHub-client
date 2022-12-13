@@ -11,7 +11,7 @@ watch(filterValue, (count) => {
 </script>
 
 <template>
-  <div class="container">
+  <div>
     <div class="header">
       <span v-upper-case class="title"> все игры </span>
       <div class="button_container">
@@ -132,14 +132,15 @@ watch(filterValue, (count) => {
 @media (max-width: 650px) {
   .title {
     font-size: 13vw;
-    margin-bottom: 2vw;
+    margin-bottom: 5vw;
+    margin-top: 5vw;
   }
   .header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px 0px 1vw 0px;
-    margin-bottom: 2vw;
+    padding: 5vw 0px 1vw 0px;
+    margin-bottom: 0.5vw;
   }
   .search_input {
     font-size: 20px;

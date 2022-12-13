@@ -124,10 +124,11 @@ const isBought = computed(() => {
     width: 100%;
     grid-template-rows: 1fr 1fr;
     row-gap: 0.5vw;
+    margin: 5px 0px;
   }
   .image {
-    width: 64vw;
-    height: 36vw;
+    width: 76vw;
+    height: 42.75vw;
   }
   .title {
     font-size: 8vw;
