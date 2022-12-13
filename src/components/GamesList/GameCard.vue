@@ -129,8 +129,8 @@ const isBought = computed(() => {
     margin: 5px 0px;
   }
   .image {
-    width: 76vw;
-    height: 42.75vw;
+    width: 100%;
+    height: 48.38vw;
   }
   .title {
     font-size: 8vw;
