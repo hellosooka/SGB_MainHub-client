@@ -37,7 +37,6 @@ const compactTitle = computed(() => {
 .container {
   display: flex;
   flex-direction: column;
-  width: 640px;
   margin: 0px 50px;
 }
 .container:hover {
@@ -45,8 +44,9 @@ const compactTitle = computed(() => {
 }
 .image {
   border-radius: 20px;
-  width: 640px;
-  height: 360px;
+  width: 97vw;
+  height: 25vw;
+  object-fit: cover;
 
   transition: 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -72,18 +72,19 @@ const compactTitle = computed(() => {
 }
 
 @media (max-width: 1145px) {
+  .image {
+    height: 28vw;
+  }
   .title {
+    width: 56vw;
     font-size: 4vw;
   }
   .description {
+    width: 56vw;
     font-size: 2.5vw;
   }
 }
 @media (max-width: 700px) {
-  .container {
-    width: 80vw;
-  }
-
   .image {
     width: 80vw;
     height: 45vw;
@@ -93,7 +94,7 @@ const compactTitle = computed(() => {
     font-size: 6vw;
   }
   .description {
-    width: 80vw;
+    width: 100%;
   }
 }
 </style>

@@ -1,47 +1,9 @@
 <script setup>
 import { usePostsStore } from "../../stores/posts.js";
 import PostCard from "./PostCard.vue";
-import { Carousel, Slide } from "vue3-carousel";
+import { Carousel, Navigation, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 import { ref } from "vue";
-
-const breakpoints = ref({
-  700: {
-    itemsToShow: 1,
-    snapAlign: "center",
-  },
-  // 1024 and up
-  1024: {
-    itemsToShow: 1.55,
-  },
-  1150: {
-    itemsToShow: 1.7,
-  },
-  1300: {
-    itemsToShow: 1.9,
-  },
-  1450: {
-    itemsToShow: 2.1,
-  },
-  1600: {
-    itemsToShow: 2.4,
-  },
-  1750: {
-    itemsToShow: 2.6,
-  },
-  1900: {
-    itemsToShow: 2.85,
-  },
-  2050: {
-    itemsToShow: 3,
-  },
-  2200: {
-    itemsToShow: 3.2,
-  },
-  2350: {
-    itemsToShow: 3.6,
-  },
-});
 
 const postsStore = usePostsStore();
 </script>
@@ -54,14 +16,18 @@ const postsStore = usePostsStore();
       </router-link>
     </div>
     <div class="carousel_container">
-      <Carousel :autoplay="5000" :breakpoints="breakpoints" :wrap-around="true">
-        <Slide v-for="post in postsStore.posts" :key="post.id">
+      <Carousel :autoplay="5000" :wrap-around="true">
+        <Slide
+          class="carousel__item"
+          v-for="post in postsStore.posts"
+          :key="post.id"
+        >
           <PostCard
             class="carousel__item"
             :title="post.title"
             :description="post.description"
             :id="post.id"
-            :imageLink="post.link"
+            :imageLink="post.bannerImage"
           />
         </Slide>
       </Carousel>
@@ -80,10 +46,7 @@ const postsStore = usePostsStore();
 }
 
 .carousel_container {
-  width: 100vw;
-}
-.pagination {
-  align-items: center;
+  width: 100%;
 }
 
 .link {

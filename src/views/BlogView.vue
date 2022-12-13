@@ -14,7 +14,7 @@ const postsStore = usePostsStore();
       :id="post.id"
       :title="post.title"
       :description="post.description"
-      :imageLink="post.link"
+      :imageLink="post.image"
     />
   </div>
 </template>

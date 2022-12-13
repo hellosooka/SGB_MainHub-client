@@ -20,5 +20,6 @@ import RecentPosts from "../components/RecentPosts/RecentPosts.vue";
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
+  width: 100%;
 }
 </style>

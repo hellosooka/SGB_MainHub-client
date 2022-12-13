@@ -18,7 +18,7 @@ const props = defineProps({
 <style scoped>
 .button {
   font-family: "St_Sign condensed";
-  font-size: 80px;
+  font-size: 5vw;
   color: white;
 
   padding: 30px 40px;
@@ -34,6 +34,7 @@ const props = defineProps({
 
 .red {
   background-color: #760000;
+  border-radius: 0px 0px 20px 0px;
 }
 
 .red:hover {
@@ -42,21 +43,17 @@ const props = defineProps({
 
 .blue {
   background-color: #1e2859;
+  border-radius: 0px 0px 0px 20px;
 }
 
 .blue:hover {
   background-color: #111d5b;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 450px) {
   .button {
-    width: 75vw;
-  }
-}
-
-@media (max-width: 610px) {
-  .button {
-    font-size: 9vw;
+    font-size: 8vw;
+    padding: 20px 20px;
   }
 }
 </style>
