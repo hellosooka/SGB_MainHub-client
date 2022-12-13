@@ -11,49 +11,48 @@ watch(filterValue, (count) => {
 </script>
 
 <template>
-  <div>
-    <div class="header">
-      <span v-upper-case class="title"> все игры </span>
-      <div class="button_container">
-        <div class="form_radio_btn">
-          <input
-            id="radio-1"
-            type="radio"
-            name="radio"
-            value="bought"
-            v-model="filterValue"
-            checked
-          />
-          <label for="radio-1" v-upper-case> купленные </label>
-        </div>
+  <div class="header">
+    <span v-upper-case class="title"> все игры </span>
+    <div class="button_container">
+      <div class="form_radio_btn">
+        <input
+          id="radio-1"
+          type="radio"
+          name="radio"
+          value="bought"
+          v-model="filterValue"
+          checked
+        />
+        <label for="radio-1" v-upper-case> купленные </label>
+      </div>
 
-        <div class="form_radio_btn">
-          <input
-            id="radio-2"
-            type="radio"
-            name="radio"
-            value="all"
-            v-model="filterValue"
-          />
-          <label for="radio-2" v-upper-case>все</label>
-        </div>
+      <div class="form_radio_btn">
+        <input
+          id="radio-2"
+          type="radio"
+          name="radio"
+          value="all"
+          v-model="filterValue"
+        />
+        <label for="radio-2" v-upper-case>все</label>
       </div>
     </div>
-    <div class="search_container">
-      <input placeholder="ПОИСК..." type="text" class="search_input" />
-    </div>
+  </div>
+  <div class="search_container">
+    <input placeholder="ПОИСК..." type="text" class="search_input" />
   </div>
 </template>
 
 <style scoped>
 .header {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
 
   padding: 0px 25px 0px 25px;
-  margin: 0px 5px 0px 5px;
+  margin: 30px 5px 0px 5px;
 }
 
 .title {
@@ -102,10 +101,11 @@ watch(filterValue, (count) => {
   display: flex;
   justify-content: center;
   margin-top: 2vw;
+  width: 97%;
 }
 
 .search_input {
-  width: 95%;
+  width: 100%;
   font-size: 30px;
   padding: 12px;
   border: 2px solid #ebebeb;
