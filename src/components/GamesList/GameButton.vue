@@ -18,28 +18,44 @@ const props = defineProps({
   font-family: "St_Sign normal";
   font-size: 36px;
   border: none;
-  border-radius: 15px;
-  padding: 12px 23px;
+  padding: 10px 21px;
+
+  border: 3px solid black;
+
+  margin: 8px;
+  box-shadow: 5px 5px black;
+
+  transition: 250ms;
+}
+
+.container:active {
+  box-shadow: 0px 0px black;
+  transform: translate(5px, 5px);
 }
 
 .buy {
   color: white;
-  background-color: #aa0000;
+  background-color: #622841;
 }
 
 .buy:hover {
-  background-color: #760000;
+  background-color: #d0a646;
 }
 
 .play {
   color: white;
-  background-color: #1e2859;
+  background-color: #a83142;
+}
+
+.play:hover {
+  background-color: #8d2837;
 }
 
 @media (max-width: 1000px) {
   .container {
     font-size: 5vw;
     padding: 2vw 5vw;
+    margin: 2px;
   }
 }
 </style>

@@ -59,7 +59,7 @@ const compactTitle = computed(() => {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 15px 10px 25px 10px;
+  padding: 15px 20px 25px 20px;
   row-gap: 5px;
 }
 

@@ -67,7 +67,9 @@ watch(searchQuery, (count) => {
 
 .title {
   font-family: "St_Sign condensed";
-  font-size: 60px;
+  font-size: 9vw;
+  color: white;
+  padding-top: 1vw;
 }
 
 .form_radio_btn {
@@ -83,7 +85,6 @@ watch(searchQuery, (count) => {
   padding: 3px 15px 0px 15px;
   line-height: 34px;
   border: 3px solid gray;
-  border-radius: 15px;
   user-select: none;
   font-size: 25px;
 
@@ -98,13 +99,13 @@ watch(searchQuery, (count) => {
 .form_radio_btn input[type="radio"]:checked + label {
   color: white;
   background-color: #f6c453;
-  border: none;
+  border: 3px solid #d0a646;
   padding: 6px 18px 3px 18px;
 }
 
 /* Hover */
 .form_radio_btn label:hover {
-  border-width: 4px;
+  border: 3px solid #c6c6c6;
 }
 
 .search_container {
@@ -119,10 +120,13 @@ watch(searchQuery, (count) => {
   width: 100%;
   font-size: 30px;
   padding: 12px;
-  border: 2px solid #ebebeb;
-  border-radius: 15px;
+  border: 2px solid #141414;
 
   transition: 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.search_input:hover {
+  border: 2px solid #434343;
 }
 
 .search_input:focus {

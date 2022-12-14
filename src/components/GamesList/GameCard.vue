@@ -28,7 +28,7 @@ const isBought = computed(() => {
   <div class="card_container">
     <img class="image" :src="imageLink" alt="" />
     <div class="content_container">
-      <div>
+      <div class="game-card-content_container">
         <span class="title"> {{ title }} </span>
         <div class="tag_container">
           <GameTag v-for="tag in tags" :key="tag.id" :title="tag.title" />
@@ -48,16 +48,23 @@ const isBought = computed(() => {
 .card_container {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  padding: 20px;
   margin: 20px;
-  background-color: white;
-  border-radius: 20px;
-  border: 2px solid #ebebeb;
+  background-color: #2c2c2c;
+  border: 4px solid black;
+
+  transition: 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
+
+.card_container:hover {
+}
+
 .image {
-  border-radius: 20px;
+  object-fit: cover;
+
   width: 40vw;
   height: 22.5vw;
+  border-width: 0px 4px 0px 0px;
+  border-style: solid black;
 }
 
 .content_container {
@@ -66,6 +73,10 @@ const isBought = computed(() => {
   justify-content: space-between;
   padding-top: 5px;
   padding-left: 20px;
+}
+
+.game-card-content_container {
+  padding: 10px 5px 0px 5px;
 }
 
 .tag_container {
@@ -79,12 +90,14 @@ const isBought = computed(() => {
 
 .title {
   font-family: "St_sign condensed";
-  font-size: 60px;
+  font-size: 5vw;
+  color: white;
 }
 
 .description {
   font-family: "St_sign normal";
   font-size: 20px;
+  color: #8e8e8e;
   margin-left: 8px;
 }
 
@@ -99,15 +112,17 @@ const isBought = computed(() => {
   font-family: "St_Sign condensed";
   font-size: 25px;
   margin: 15px;
+
+  transition: 500ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @media (max-width: 1000px) {
   .image {
-    width: 42vw;
-    height: 23.63vw;
+    width: 100%;
+    height: 50vw;
   }
   .title {
-    font-size: 6vw;
+    font-size: 8vw;
   }
   .description {
     font-size: 2.5vw;
@@ -131,6 +146,7 @@ const isBought = computed(() => {
   .image {
     width: 100%;
     height: 48.38vw;
+    border: 4px solid black;
   }
   .title {
     font-size: 8vw;
@@ -149,6 +165,15 @@ const isBought = computed(() => {
   .price {
     font-size: 4vw;
     margin: 1.5vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .game-card-content_container {
+    padding: 5px 0px;
+  }
+  .content_container {
+    padding-left: 5px;
   }
 }
 </style>

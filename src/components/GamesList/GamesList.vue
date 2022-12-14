@@ -60,33 +60,15 @@ const searchedGame = computed(() => {
 
 <style scoped>
 .game-list_container {
-  background-color: #2c2c2c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1c1c1c;
   width: 98%;
-  border-radius: 35px;
-  justify-content: center;
 }
 
 .cards_container {
   width: 97%;
-}
-
-@media (max-width: 1000px) {
-  .container {
-    width: 100%;
-  }
-  .cards_container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 650px) {
-  .cards_container {
-    grid-template-columns: 1fr;
-  }
-  .container {
-    margin-top: 20px;
-    padding-bottom: 40px;
-  }
+  align-items: center;
 }
 </style>

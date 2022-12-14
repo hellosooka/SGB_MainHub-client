@@ -16,7 +16,6 @@ const props = defineProps({
   background-color: #1e2859;
   padding: 8px 15px 6px 15px;
   border: 1px solid #1e2859;
-  border-radius: 12px;
 }
 @media (max-width: 500px) {
   .container {
