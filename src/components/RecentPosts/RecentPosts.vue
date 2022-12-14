@@ -49,10 +49,6 @@ const postsStore = usePostsStore();
   width: 100%;
 }
 
-.carousel__track {
-  align-items: flex-start;
-}
-
 .link {
   font-family: "St_Sign condensed";
   font-size: 45px;
@@ -68,7 +64,7 @@ const postsStore = usePostsStore();
     font-size: 7vw;
   }
   .header_container {
-    padding: 10px 40px 10px 40px;
+    padding: 15px 40px 15px 40px;
   }
 }
 </style>
