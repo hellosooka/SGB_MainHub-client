@@ -36,7 +36,8 @@ const isActive = computed(() => {
 .container {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  background-color: #141414;
+  padding-bottom: 50px;
 }
 .form_container {
   display: flex;
@@ -47,6 +48,7 @@ const isActive = computed(() => {
   margin-top: 20px;
   margin-left: 9px;
   font-size: 30px;
+  color: white;
   font-family: "St_Sign normal";
 }
 
@@ -54,7 +56,6 @@ const isActive = computed(() => {
   margin-top: 5px;
   background-color: #f8f8f8;
   border: 2px solid #ebebeb;
-  border-radius: 12px;
   font-size: 28px;
   padding: 6px;
 }
@@ -63,8 +64,7 @@ const isActive = computed(() => {
   margin-top: 15px;
   font-size: 35px;
   padding: 7px;
-  border: 2px solid #ebebeb;
-  border-radius: 10px;
+  border: 2px solid #434343;
   font-family: "St_Sign condensed";
 
   transition: 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -72,7 +72,7 @@ const isActive = computed(() => {
 
 .active {
   padding: 9px;
-  background-color: #1e2859;
+  background-color: #e13b37;
   color: white;
   border: none;
 }
