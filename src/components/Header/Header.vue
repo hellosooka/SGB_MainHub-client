@@ -31,12 +31,17 @@ const currentRoute = computed(() => route.name);
   align-items: center;
   width: 100%;
   padding: 15px 30px;
+  background-color: #141414;
+  border-width: 0px 0px 3px 0px;
+  border-style: solid;
+  border-color: #8e8e8e;
 }
 .main-button_text {
   display: block;
   font-family: "SArcade";
   font-size: 70px;
   padding-top: 10px;
+  color: white;
 }
 
 @media (max-width: 768px) {

@@ -97,7 +97,7 @@ watch(searchQuery, (count) => {
 /* Checked */
 .form_radio_btn input[type="radio"]:checked + label {
   color: white;
-  background-color: #e3bf00;
+  background-color: #f6c453;
   border: none;
   padding: 6px 18px 3px 18px;
 }

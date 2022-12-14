@@ -30,7 +30,7 @@ const searchedGame = computed(() => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="game-list_container">
     <GamesListHeader @search="searchGame" @filter="changeGames" />
     <div class="cards_container">
       <GameCard
@@ -59,10 +59,9 @@ const searchedGame = computed(() => {
 </template>
 
 <style scoped>
-.container {
-  margin-top: 60px;
-  background-color: #f8f8f8;
-  width: 95%;
+.game-list_container {
+  background-color: #2c2c2c;
+  width: 98%;
   border-radius: 35px;
   justify-content: center;
 }

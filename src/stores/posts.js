@@ -14,7 +14,7 @@ export const usePostsStore = defineStore("posts", () => {
     {
       id: 2,
       title:
-        "pНазвание Название Название Название НазваниеНазваниеНазваниеНазваниеНазвание ",
+        "pНазвание Название Название Название НазваниеНазва ниеНазвание НазваниеНазвание ",
       image: "https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
       bannerImage: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
       description:
@@ -23,7 +23,7 @@ export const usePostsStore = defineStore("posts", () => {
     {
       id: 3,
       title:
-        "Н�звание Название Название Название НазваниеНазваниеНазваниеНазваниеНазваниеНазваниеНазвание Название Название Название НазваниеНазваниеНазваниеНазваниеНазваниеНазваниеНазвание ",
+        "Н�звание Название Название Название НазваниеНаз вание Название Название Название НазваниеНазвание Название Название Название Назван иеНаз ваниеНазв аниеНазван иеНазваниеНаз ваниеНазвание ",
       image: "https://rgrfacilities.co.uk/gallery/blog/8278044.jpg",
       bannerImage: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
       description:
@@ -32,7 +32,7 @@ export const usePostsStore = defineStore("posts", () => {
   ]);
 
   function getPostById(id) {
-    return posts.value.filter((post) => post.id === id);
+    return posts.value.find((post) => post.id == id);
   }
 
   return { posts, getPostById };

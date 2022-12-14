@@ -4,7 +4,11 @@ import GameButton from "./GameButton.vue";
 
 <template>
   <div class="container">
-    <span class="title" v-upper-case> готов к приключениям? </span>
+    <div class="title_background">
+      <div class="title_container">
+        <span class="title" v-upper-case> готов к приключениям? </span>
+      </div>
+    </div>
     <div class="game-button_container">
       <GameButton color="blue" link="/search-room" v-upper-case>
         найти комнтау
@@ -18,32 +22,27 @@ import GameButton from "./GameButton.vue";
 
 <style scoped>
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 6vw;
-  padding: 0px 20px;
-
-  transition: 200ms cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 
-.container:hover {
-  padding: 0px 15px;
+.title_background {
+  background-color: black;
+  border: none;
+  width: 100%;
+}
+
+.title_container {
+  padding: 60px 0px;
+  width: 100%;
 }
 
 .title {
-  text-align: center;
-  padding: 70px 0px;
   display: block;
+  text-align: center;
+  align-items: center;
   width: 100%;
   font-family: "SHEPEL";
-  border: none;
-  border-radius: 20px 20px 0px 0px;
   font-size: 5vw;
   color: white;
-  background-color: black;
-  width: 100%;
 }
 
 .game-button_container {
@@ -54,10 +53,12 @@ import GameButton from "./GameButton.vue";
   width: 100%;
 }
 @media (max-width: 850px) {
+  .title_container {
+    padding: 30px 0px;
+  }
   .title {
     text-align: center;
     font-size: 7vw;
-    padding: 40px 0px;
   }
 }
 </style>

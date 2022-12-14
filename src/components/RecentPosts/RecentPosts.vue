@@ -16,7 +16,7 @@ const postsStore = usePostsStore();
       </router-link>
     </div>
     <div class="carousel_container">
-      <Carousel :autoplay="5000" :wrap-around="true">
+      <Carousel class="carousel" :autoplay="5000" :wrap-around="true">
         <Slide
           class="carousel__item"
           v-for="post in postsStore.posts"
@@ -42,17 +42,21 @@ const postsStore = usePostsStore();
 
 .header_container {
   align-self: flex-end;
-  padding: 10px 40px 20px 40px;
+  padding: 30px 40px 20px 40px;
 }
 
 .carousel_container {
   width: 100%;
 }
 
+.carousel__track {
+  align-items: flex-start;
+}
+
 .link {
   font-family: "St_Sign condensed";
-  font-size: 30px;
-  color: #1e2859;
+  font-size: 45px;
+  color: white;
 }
 
 .link:hover {

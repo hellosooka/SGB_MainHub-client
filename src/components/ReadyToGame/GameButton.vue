@@ -22,7 +22,6 @@ const props = defineProps({
   color: white;
 
   padding: 30px 40px;
-  border-radius: 20px;
   text-align: center;
 
   transition: 150ms cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -34,7 +33,6 @@ const props = defineProps({
 
 .red {
   background-color: #760000;
-  border-radius: 0px 0px 20px 0px;
 }
 
 .red:hover {
@@ -43,7 +41,6 @@ const props = defineProps({
 
 .blue {
   background-color: #1e2859;
-  border-radius: 0px 0px 0px 20px;
 }
 
 .blue:hover {

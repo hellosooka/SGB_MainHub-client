@@ -4,6 +4,7 @@ import GamesList from "../components/GamesList/GamesList.vue";
 
 <template>
   <div class="container">
+    <br />
     <GamesList />
   </div>
 </template>

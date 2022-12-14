@@ -56,8 +56,7 @@ const currentRoute = computed(() => route.name);
 .container {
   display: flex;
   flex-direction: row;
-  border-radius: 12px;
-  background: #ebebeb;
+  background: #2c2c2c;
   align-items: center;
   justify-content: space-around;
   font-family: "St_Sign normal";
@@ -67,46 +66,43 @@ const currentRoute = computed(() => route.name);
 .button {
   padding: 15px;
   transition: 150ms cubic-bezier(0.47, 0, 0.745, 0.715);
-  border: 2px solid #d9d9d9;
+  border: 2px solid #1c1c1c;
+  color: white;
 }
 
 .button:hover {
-  background-color: #d9d9d9;
+  background-color: #1c1c1c;
   border-color: #cccccc;
 }
 
 .purchases {
-  border-width: 2px 0px 2px 2px;
-  border-radius: 12px 0px 0px 12px;
 }
 
 .nickname {
-  border-width: 2px 2px 2px 0px;
-  border-radius: 0px 12px 12px 0px;
 }
 
 .registration {
   color: white;
-  background: #760000;
-  border-radius: 0px 12px 12px 0px;
+  background: #a83142;
   padding: 15px 20px;
 
-  border: 2px solid #610000;
+  border: 2px solid #a83142;
 }
 
 .registration:hover {
-  background-color: #610000;
+  background-color: #760000;
+  border-radius: 2px solid #e13b37;
 }
 
 .active {
   color: white;
-  background: #1e2859;
-  border: 2px solid #111d5b;
+  background: #f6c453;
+  border: 2px solid #d0a646;
 }
 
 .active:hover {
-  background-color: #111d5b;
-  border-color: #0d1647;
+  background-color: #d0a646;
+  border-color: #f6c453;
 }
 
 @media (max-width: 768px) {
