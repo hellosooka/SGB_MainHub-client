@@ -43,7 +43,7 @@ const compactTitle = computed(() => {
 <style scoped>
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 20px;
   background-color: white;
   border: 4px solid black;
@@ -89,7 +89,7 @@ const compactTitle = computed(() => {
 .link_container {
   display: flex;
   justify-content: flex-end;
-  margin: 10px;
+  margin: 20px;
 }
 .link {
   font-size: 1.2vw;
@@ -100,32 +100,38 @@ const compactTitle = computed(() => {
   text-decoration: underline;
 }
 
-@media (max-width: 1000px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-  }
-  .image {
-    background-position: center center;
-    background-size: cover;
-    width: 99%;
-    height: 50vw;
-    overflow: hidden;
-  }
-  .content_container {
-    padding: 1vw 2vw;
-  }
+@media (max-width: 1100px) {
   .title {
-    font-size: 6vw;
-    width: 100%;
+    font-size: 4vw;
+  }
+  .description {
+    font-size: 2vw;
+  }
+  .link {
+    font-size: 2vw;
+  }
+}
+
+@media (max-width: 650px) {
+  .title {
+    font-size: 5vw;
   }
   .description {
     font-size: 2.5vw;
-    width: 100%;
   }
   .link {
-    padding-top: 1vw;
+    font-size: 2.5vw;
+  }
+}
+
+@media (max-width: 450px) {
+  .title {
+    font-size: 6vw;
+  }
+  .description {
+    font-size: 3vw;
+  }
+  .link {
     font-size: 3vw;
   }
 }

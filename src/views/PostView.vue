@@ -11,7 +11,7 @@ const postData = postsStore.getPostById(postId);
 
 <template>
   <div class="full-post_container">
-    <img class="image" :src="postData.bannerImage" alt="" />
+    <img class="image" :src="postData.image" alt="" />
     <div class="full-post_content">
       <span class="title"> {{ postData.title }} </span>
       <hr class="line" />

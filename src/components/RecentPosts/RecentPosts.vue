@@ -27,7 +27,7 @@ const postsStore = usePostsStore();
             :title="post.title"
             :description="post.description"
             :id="post.id"
-            :imageLink="post.bannerImage"
+            :imageLink="post.image"
           />
         </Slide>
       </Carousel>
