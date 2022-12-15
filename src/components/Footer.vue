@@ -17,7 +17,7 @@
   justify-content: space-around;
   align-items: center;
   padding: 30px;
-  background-color: #ebebeb;
+  background-color: #1c1c1c;
   height: 100px;
 }
 
