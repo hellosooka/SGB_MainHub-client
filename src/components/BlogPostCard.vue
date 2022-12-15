@@ -44,29 +44,33 @@ const compactTitle = computed(() => {
 .container {
   display: flex;
   flex-direction: row;
-  padding: 30px;
   margin: 20px;
-  border: 2px solid #ebebeb;
-  border-radius: 20px;
   background-color: white;
-}
-.image {
-  width: 40vw;
-  height: 22.5vw;
-  border: 2px solid #ebebeb;
+  border: 4px solid black;
 
-  border-radius: 20px;
+  transition: 200ms;
+}
+
+.container:hover {
+  border: 4px solid #434343;
+}
+
+.image {
+  object-fit: cover;
+
+  width: 100%;
+  height: 22.5vw;
 }
 .content_container {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding: 10px 0px 10px 30px;
 }
 
 .data_container {
   display: flex;
   flex-direction: column;
+  padding: 20px 20px 5px 20px;
 }
 
 .title {
@@ -85,6 +89,7 @@ const compactTitle = computed(() => {
 .link_container {
   display: flex;
   justify-content: flex-end;
+  margin: 10px;
 }
 .link {
   font-size: 1.2vw;
@@ -99,7 +104,6 @@ const compactTitle = computed(() => {
   .container {
     flex-direction: column;
     align-items: center;
-    padding: 3vw;
     overflow: hidden;
   }
   .image {
