@@ -178,4 +178,20 @@ function getRandomIntInclusive(min, max) {
     font-size: 3.5vw;
   }
 }
+
+@media (max-width: 450px) {
+  .game-view_title {
+    font-size: 15vw;
+  }
+  .game-view_description {
+    font-size: 4vw;
+  }
+  .game-functions_button {
+    box-shadow: 5px 5px black;
+    font-size: 8vw;
+  }
+  .game-functions_tag {
+    font-size: 4vw;
+  }
+}
 </style>
