@@ -38,7 +38,7 @@ const router = createRouter({
       component: PurchasesView,
     },
     {
-      path: "/games/:id",
+      path: "/games/:gameId",
       name: "game",
       component: GameView,
     },

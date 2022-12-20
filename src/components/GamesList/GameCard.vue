@@ -16,10 +16,10 @@ const gamesStore = useGamesStore();
 
 const isBought = computed(() => {
   const game = gamesStore.getUserGameById(props.id);
-  if (game.length == 0) {
-    return false;
-  } else {
+  if (game) {
     return true;
+  } else {
+    return false;
   }
 });
 </script>
@@ -38,7 +38,9 @@ const isBought = computed(() => {
       <div class="footer_container">
         <span v-if="!isBought" class="price"> {{ price }}р </span>
         <GameButton v-if="isBought" type="play"> Играть </GameButton>
-        <GameButton v-else type="buy"> Купить </GameButton>
+        <GameButton v-else type="buy">
+          <router-link :to="`/games/${id}`"> Купить </router-link>
+        </GameButton>
       </div>
     </div>
   </div>

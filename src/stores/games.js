@@ -8,7 +8,6 @@ export const useGamesStore = defineStore("games", () => {
       title: "GameOne",
       description: "some description",
       image: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
-      bannerImage: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
       price: 100,
       link: "some link",
       createdAt: "2022-12-12T10:31:15.285Z",
@@ -28,6 +27,39 @@ export const useGamesStore = defineStore("games", () => {
         {
           id: 1,
           title: "free",
+          createdAt: "2022-12-12T10:34:37.673Z",
+          updatedAt: "2022-12-12T10:34:37.673Z",
+          GameTags: {
+            id: 2,
+            gameId: 1,
+            tagId: 1,
+          },
+        },
+        {
+          id: 1,
+          title: "free",
+          createdAt: "2022-12-12T10:34:37.673Z",
+          updatedAt: "2022-12-12T10:34:37.673Z",
+          GameTags: {
+            id: 2,
+            gameId: 1,
+            tagId: 1,
+          },
+        },
+        {
+          id: 1,
+          title: "taaags",
+          createdAt: "2022-12-12T10:34:37.673Z",
+          updatedAt: "2022-12-12T10:34:37.673Z",
+          GameTags: {
+            id: 2,
+            gameId: 1,
+            tagId: 1,
+          },
+        },
+        {
+          id: 1,
+          title: "more tags",
           createdAt: "2022-12-12T10:34:37.673Z",
           updatedAt: "2022-12-12T10:34:37.673Z",
           GameTags: {
@@ -91,7 +123,6 @@ export const useGamesStore = defineStore("games", () => {
       title: "GameTwo",
       description: "some description",
       image: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
-      bannerImage: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
       price: 200,
       link: "some link",
       createdAt: "2022-12-12T10:31:29.607Z",
@@ -149,7 +180,6 @@ export const useGamesStore = defineStore("games", () => {
       title: "GameThree",
       description: "some description",
       image: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
-      bannerImage: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
       price: 300,
       link: "some link",
       createdAt: "2022-12-12T10:31:36.049Z",
@@ -159,11 +189,11 @@ export const useGamesStore = defineStore("games", () => {
   ]);
 
   function getGameById(id) {
-    return allGames.value.filter((game) => game.id === id);
+    return allGames.value.find((game) => game.id == id);
   }
 
   function getUserGameById(id) {
-    return userGames.value.filter((game) => game.id === id);
+    return userGames.value.find((game) => game.id == id);
   }
 
   return { allGames, userGames, getGameById, getUserGameById };
