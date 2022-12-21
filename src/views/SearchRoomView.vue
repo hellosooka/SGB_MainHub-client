@@ -6,6 +6,7 @@ import axios from "axios";
 const nickname = ref("");
 const code = ref("");
 const isError = ref(false);
+const errorMessage = ref("");
 
 const isActive = computed(() => {
   if (nickname.value.trim() == "" || code.value.trim() == "") {
@@ -20,39 +21,55 @@ const authStore = useAuthStore();
 
 const onSubmit = async () => {
   const room = await getRoomByRoomCode();
-  await addUserToRoom(room.id);
-  //window.location.href = `https://sgb-bunker-client.vercel.app/room/${room.roomCode}`;
+  if (room) {
+    const userRoom = await addUserToRoom(room.id);
+    if (userRoom) {
+      await redirectToGame(userRoom.game.link, userRoom.roomCode);
+    }
+  }
 };
 
 const getRoomByRoomCode = async () => {
   try {
     const response = await axios.get(
-      `https://sgb-room-service.vercel.app/room/${code.value}/byRoomCode`
+      `http://45.80.68.47:5000/room/${code.value}/byRoomCode`
     );
     isError.value = false;
     return response.data;
   } catch (e) {
     isError.value = true;
+    errorMessage.value = e.response.data.message;
     return false;
   }
 };
 
 const addUserToRoom = async (roomId) => {
   try {
-    await axios.post(
-      `https://sgb-room-service.vercel.app/room/add-client/${roomId}`,
-      { login: authStore.nickname, nickname: nickname.value }
+    const response = await axios.post(
+      `http://45.80.68.47:5000/room/add-client/${roomId}`,
+      {
+        login: authStore.nickname,
+        nickname: nickname.value,
+      }
     );
+    isError.value = false;
+    return response.data;
   } catch (e) {
-    console.log(e.message);
+    isError.value = true;
+    errorMessage.value = e.response.data.message;
+    return false;
   }
+};
+
+const redirectToGame = async (gameLink, roomCode) => {
+  window.location.href = `${gameLink}/room/${roomCode}`;
 };
 </script>
 
 <template>
   <div class="container">
     <form @submit.prevent="onSubmit" class="form_container">
-      <span class="error_message" v-if="isError"> Комната не найдена </span>
+      <span class="error_message" v-if="isError"> {{ errorMessage }} </span>
 
       <label for="nickname" class="label" v-upper-case> Имя </label>
       <input v-model="nickname" id="nickname" class="input" type="text" />
