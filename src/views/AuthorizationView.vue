@@ -1,8 +1,14 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
+import { useAuthStore } from "../stores/auth";
+import { useRouter } from "vue-router";
+
+const authStore = useAuthStore();
+const router = useRouter();
 
 const email = ref("");
 const password = ref("");
+const nickname = ref("");
 
 const isActive = computed(() => {
   if (email.value.trim() != "" && password.value.trim() != "") {
@@ -11,22 +17,39 @@ const isActive = computed(() => {
     return false;
   }
 });
+
+watch([email, password], () => {
+  if (authStore.isError) {
+    authStore.isError = false;
+  }
+});
+
+const onSubmit = async () => {
+  await authStore.login(
+    `${email.value}`,
+    `${nickname.value}`,
+    `${password.value}`
+  );
+  if (!authStore.isError) {
+    router.push("/");
+  }
+};
 </script>
 
 <template>
   <div class="container">
-    <form class="form_container">
+    <span class="error_message" v-if="authStore.isError">
+      {{ authStore.errorMessage }}
+    </span>
+    <form @submit.prevent="onSubmit" class="form_container">
       <span class="title"> Авторизация </span>
+      <label class="label" for="nickname"> Никнейм </label>
+      <input v-model="nickname" class="input" id="nickname" type="text" />
       <label class="label" for="email"> Электронная почта </label>
       <input v-model="email" class="input" id="email" type="email" />
       <label class="label" for="password"> Пароль </label>
       <input v-model="password" class="input" id="password" type="password" />
-      <button
-        :class="{ active: isActive }"
-        :disabled="!isActive"
-        class="button"
-        type="submit"
-      >
+      <button :class="{ active: isActive }" :disabled="!isActive" class="button" type="submit">
         Войти
       </button>
     </form>
@@ -43,20 +66,34 @@ const isActive = computed(() => {
   align-items: center;
   margin-bottom: 30px;
 }
+
+.error_message {
+  padding: 1vw;
+  border: 2px solid #e13b37;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  font-family: "St_sign normal";
+  color: #e13b37;
+  margin-top: 1vw;
+}
+
 .title {
   font-size: 50px;
   font-family: "St_Sign condensed";
   color: #1e2859;
   margin-bottom: 5px;
 }
+
 .form_container {
   display: flex;
   flex-direction: column;
   border: 2px solid #ebebeb;
   border-radius: 15px;
+  margin-top: 1vw;
   padding: 35px;
   background-color: #f8f8f8;
 }
+
 .label {
   margin-left: 5px;
   margin-top: 12px;
@@ -64,6 +101,7 @@ const isActive = computed(() => {
   font-size: 25px;
   font-family: "St_Sign normal";
 }
+
 .input {
   padding: 12px;
   font-size: 25px;
@@ -71,6 +109,7 @@ const isActive = computed(() => {
   border-radius: 10px;
   border: 2px solid #ebebeb;
 }
+
 .button {
   margin-top: 25px;
   font-size: 25px;
@@ -93,6 +132,7 @@ const isActive = computed(() => {
   font-size: 18px;
   font-family: "St_Sign normal";
   color: #1e2859;
+  margin-bottom: 2vw;
 }
 
 .link:hover {

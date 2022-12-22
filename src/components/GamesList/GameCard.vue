@@ -4,12 +4,12 @@ import GameButton from "./GameButton.vue";
 import { useGamesStore } from "../../stores/games";
 import { computed } from "vue";
 const props = defineProps({
-  id: "",
-  title: "",
-  description: "",
-  imageLink: "",
-  price: "",
-  tags: [],
+  id: String,
+  title: String,
+  description: String,
+  imageLink: String,
+  price: String,
+  tags: [String],
 });
 
 const gamesStore = useGamesStore();
@@ -57,8 +57,7 @@ const isBought = computed(() => {
   transition: 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.card_container:hover {
-}
+.card_container:hover {}
 
 .image {
   object-fit: cover;
@@ -123,13 +122,16 @@ const isBought = computed(() => {
     width: 100%;
     height: 50vw;
   }
+
   .title {
     font-size: 8vw;
   }
+
   .description {
     font-size: 2.5vw;
     margin-left: 2px;
   }
+
   .card_container {
     padding: 15px;
     margin: 5px;
@@ -138,6 +140,7 @@ const isBought = computed(() => {
     row-gap: 10px;
   }
 }
+
 @media (max-width: 650px) {
   .card_container {
     width: 100%;
@@ -145,11 +148,13 @@ const isBought = computed(() => {
     row-gap: 0.5vw;
     margin: 5px 0px;
   }
+
   .image {
     width: 100%;
     height: 48.38vw;
     border: 4px solid black;
   }
+
   .title {
     font-size: 8vw;
   }
@@ -157,13 +162,16 @@ const isBought = computed(() => {
   .description {
     font-size: 4vw;
   }
+
   .content_container {
     padding-left: 15px;
   }
+
   .tag_container {
     margin: 5px 0px 3px 0px;
     column-gap: 5px;
   }
+
   .price {
     font-size: 4vw;
     margin: 1.5vw;
@@ -174,6 +182,7 @@ const isBought = computed(() => {
   .game-card-content_container {
     padding: 5px 0px;
   }
+
   .content_container {
     padding-left: 5px;
   }
