@@ -1,6 +1,7 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
+import localforage from "localforage";
 
 export const useAuthStore = defineStore("auth", () => {
   const isRegistering = ref(false);
@@ -25,6 +26,15 @@ export const useAuthStore = defineStore("auth", () => {
     }
   }
 
+  function generateJSON(userEmail, userNickname, userPassword) {
+    const json = {
+      nickname: userNickname,
+      email: userEmail,
+      password: userPassword,
+    };
+    return json;
+  }
+
   async function getUserNicknameByEmail(email) {
     try {
       const response = await axios.get(`${HOST.value}/users/${email}/nickname`);
@@ -32,6 +42,19 @@ export const useAuthStore = defineStore("auth", () => {
     } catch (e) {
       showError(e);
     }
+  }
+
+  function saveUserData(userEmail, userNickname, userToken) {
+    token.value = userToken;
+    email.value = userEmail;
+    nickname.value = userNickname;
+    saveUserDataLocal();
+  }
+
+  function saveUserDataLocal() {
+    localforage.setItem("token", token.value);
+    localforage.setItem("email", email.value);
+    localforage.setItem("nickname", nickname.value);
   }
 
   function showError(e) {
@@ -55,19 +78,18 @@ export const useAuthStore = defineStore("auth", () => {
     }
   }
 
-  function generateJSON(userEmail, userNickname, userPassword) {
-    const json = {
-      nickname: userNickname,
-      email: userEmail,
-      password: userPassword,
-    };
-    return json;
-  }
-
-  function saveUserData(userEmail, userNickname, userToken) {
-    token.value = userToken;
-    email.value = userEmail;
-    nickname.value = userNickname;
+  async function loadUser() {
+    try {
+      token.value = await localforage.getItem("token");
+      email.value = await localforage.getItem("email");
+      nickname.value = await localforage.getItem("nickname");
+      isRegistering.value = true;
+    } catch (e) {
+      token.value = "";
+      email.value = "";
+      nickname.value = "";
+      isRegistering.value = false;
+    }
   }
 
   return {
@@ -78,5 +100,6 @@ export const useAuthStore = defineStore("auth", () => {
     errorMessage,
     register,
     login,
+    loadUser,
   };
 });
