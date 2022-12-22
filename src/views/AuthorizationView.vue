@@ -8,7 +8,6 @@ const router = useRouter();
 
 const email = ref("");
 const password = ref("");
-const nickname = ref("");
 
 const isActive = computed(() => {
   if (email.value.trim() != "" && password.value.trim() != "") {
@@ -25,11 +24,7 @@ watch([email, password], () => {
 });
 
 const onSubmit = async () => {
-  await authStore.login(
-    `${email.value}`,
-    `${nickname.value}`,
-    `${password.value}`
-  );
+  await authStore.login(`${email.value}`, `${password.value}`);
   if (!authStore.isError) {
     router.push("/");
   }
@@ -43,8 +38,6 @@ const onSubmit = async () => {
     </span>
     <form @submit.prevent="onSubmit" class="form_container">
       <span class="title"> Авторизация </span>
-      <label class="label" for="nickname"> Никнейм </label>
-      <input v-model="nickname" class="input" id="nickname" type="text" />
       <label class="label" for="email"> Электронная почта </label>
       <input v-model="email" class="input" id="email" type="email" />
       <label class="label" for="password"> Пароль </label>

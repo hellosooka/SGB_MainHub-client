@@ -8,6 +8,7 @@ import SearchRoomView from "../views/SearchRoomView.vue";
 import BlogView from "../views/BlogView.vue";
 import PostView from "../views/PostView.vue";
 import GameView from "../views/GameView.vue";
+import CongrutilationsView from "../views/Congrutilations.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: "/authorization",
       name: "authorization",
       component: AuthorizationView,
+    },
+    {
+      path: "/congrutilations",
+      name: "congrutilations",
+      component: CongrutilationsView,
     },
     {
       path: "/settings",
