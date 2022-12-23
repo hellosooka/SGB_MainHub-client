@@ -14,8 +14,8 @@ const postsStore = usePostsStore();
         :key="post.id"
         :id="post.id"
         :title="post.title"
-        :description="post.description"
-        :imageLink="post.image"
+        :content="post.content"
+        :imageLink="`${postsStore.HOST}/${post.image}`"
       />
     </div>
   </div>
@@ -24,6 +24,7 @@ const postsStore = usePostsStore();
 .blog_background {
   background-color: #141414;
 }
+
 .blog_container {
   display: flex;
   flex-direction: column;

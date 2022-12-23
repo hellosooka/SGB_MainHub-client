@@ -1,18 +1,21 @@
 <script setup>
 import { computed } from "vue";
+import { usePostsStore } from "../../stores/posts";
 
 const props = defineProps({
   id: "",
   imageLink: "",
   title: "",
-  description: "",
+  content: "",
 });
 
-const compactDescription = computed(() => {
-  if (props.description.length > 300) {
-    return props.description.slice(0, 300) + "...";
+const postsStore = usePostsStore();
+
+const compactContent = computed(() => {
+  if (props.content.length > 300) {
+    return props.content.slice(0, 300) + "...";
   }
-  return props.description;
+  return props.content;
 });
 
 const compactTitle = computed(() => {
@@ -26,10 +29,10 @@ const compactTitle = computed(() => {
 <template>
   <router-link :to="`/blog/${props.id}`">
     <div class="container">
-      <img class="image" :src="imageLink" alt="" />
+      <img class="image" :src="`${postsStore.HOST}/${imageLink}`" alt="" />
       <div class="text_container">
         <span v-upper-case class="title"> {{ compactTitle }} </span>
-        <span class="description"> {{ compactDescription }} </span>
+        <span class="content"> {{ compactContent }} </span>
       </div>
     </div>
   </router-link>
@@ -44,11 +47,13 @@ const compactTitle = computed(() => {
   border: 3px solid #2c2c2c;
   height: 100%;
 }
+
 .container:hover {
   text-decoration: underline;
 }
+
 .image {
-  width: 100%;
+  width: 95vw;
   height: 25vw;
   object-fit: cover;
 
@@ -69,7 +74,8 @@ const compactTitle = computed(() => {
   font-size: 40px;
   font-family: "St_Sign condensed";
 }
-.description {
+
+.content {
   color: gray;
   text-align: left;
   font-size: 25px;
@@ -80,11 +86,13 @@ const compactTitle = computed(() => {
   .image {
     height: 45vw;
   }
+
   .title {
     width: 80vw;
     font-size: 6vw;
   }
-  .description {
+
+  .content {
     width: 100%;
     font-size: 3.5vw;
   }

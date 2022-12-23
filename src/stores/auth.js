@@ -78,17 +78,33 @@ export const useAuthStore = defineStore("auth", () => {
     }
   }
 
+  async function unLogin() {
+    await removeLocalUserData();
+    removeUserData();
+  }
+
+  async function removeLocalUserData() {
+    await localforage.removeItem("token");
+    await localforage.removeItem("email");
+    await localforage.removeItem("nickname");
+  }
+
+  function removeUserData() {
+    token.value = "";
+    email.value = "";
+    nickname.value = "";
+    isRegistering.value = false;
+  }
+
   async function loadUser() {
-    try {
-      token.value = await localforage.getItem("token");
-      email.value = await localforage.getItem("email");
-      nickname.value = await localforage.getItem("nickname");
+    const localToken = await localforage.getItem("token");
+    const localEmail = await localforage.getItem("email");
+    const localNickname = await localforage.getItem("nickname");
+    if (localToken && localEmail && localNickname) {
+      token.value = localToken;
+      email.value = localEmail;
+      nickname.value = localNickname;
       isRegistering.value = true;
-    } catch (e) {
-      token.value = "";
-      email.value = "";
-      nickname.value = "";
-      isRegistering.value = false;
     }
   }
 
@@ -101,5 +117,6 @@ export const useAuthStore = defineStore("auth", () => {
     register,
     login,
     loadUser,
+    unLogin,
   };
 });

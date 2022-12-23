@@ -1,9 +1,8 @@
 <script setup>
 import { usePostsStore } from "../../stores/posts.js";
 import PostCard from "./PostCard.vue";
-import { Carousel, Navigation, Slide } from "vue3-carousel";
+import { Carousel, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
-import { ref } from "vue";
 
 const postsStore = usePostsStore();
 </script>
@@ -25,7 +24,7 @@ const postsStore = usePostsStore();
           <PostCard
             class="carousel__item"
             :title="post.title"
-            :description="post.description"
+            :content="post.content"
             :id="post.id"
             :imageLink="post.image"
           />
@@ -63,6 +62,7 @@ const postsStore = usePostsStore();
   .link {
     font-size: 7vw;
   }
+
   .header_container {
     padding: 15px 40px 15px 40px;
   }

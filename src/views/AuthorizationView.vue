@@ -42,7 +42,12 @@ const onSubmit = async () => {
       <input v-model="email" class="input" id="email" type="email" />
       <label class="label" for="password"> Пароль </label>
       <input v-model="password" class="input" id="password" type="password" />
-      <button :class="{ active: isActive }" :disabled="!isActive" class="button" type="submit">
+      <button
+        :class="{ active: isActive }"
+        :disabled="!isActive"
+        class="button"
+        type="submit"
+      >
         Войти
       </button>
     </form>
@@ -130,5 +135,29 @@ const onSubmit = async () => {
 
 .link:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 12vw;
+  }
+
+  .label {
+    font-size: 5.5vw;
+  }
+
+  .input {
+    font-size: 7vw;
+    padding: 3vw;
+  }
+
+  .button {
+    font-size: 5vw;
+    padding: 4vw;
+  }
+
+  .form_container {
+    width: 80vw;
+  }
 }
 </style>

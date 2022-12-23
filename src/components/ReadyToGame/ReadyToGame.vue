@@ -22,6 +22,7 @@ import GameButton from "./GameButton.vue";
 
 <style scoped>
 .container {
+  margin-top: 2vw;
 }
 
 .title_background {
@@ -52,10 +53,12 @@ import GameButton from "./GameButton.vue";
   justify-content: center;
   width: 100%;
 }
+
 @media (max-width: 850px) {
   .title_container {
     padding: 30px 0px;
   }
+
   .title {
     text-align: center;
     font-size: 7vw;

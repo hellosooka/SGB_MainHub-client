@@ -11,11 +11,11 @@ const postData = postsStore.getPostById(postId);
 
 <template>
   <div class="full-post_container">
-    <img class="image" :src="postData.image" alt="" />
+    <img class="image" :src="`${postsStore.HOST}/${postData.image}`" alt="" />
     <div class="full-post_content">
       <span class="title"> {{ postData.title }} </span>
       <hr class="line" />
-      <span class="description"> {{ postData.description }} </span>
+      <span class="content"> {{ postData.content }} </span>
     </div>
   </div>
 </template>
@@ -24,7 +24,9 @@ const postData = postsStore.getPostById(postId);
 .full-post_container {
   background-color: #141414;
 }
+
 .image {
+  margin-top: 1.2vw;
   width: 100%;
   height: 30vw;
   object-fit: cover;
@@ -47,7 +49,7 @@ const postData = postsStore.getPostById(postId);
   width: 100%;
 }
 
-.description {
+.content {
   padding: 10px 25px;
   font-family: "St_sign normal";
   font-size: 2vw;
@@ -58,25 +60,30 @@ const postData = postsStore.getPostById(postId);
   .full-post_content {
     padding: 10px 30px;
   }
+
   .image {
     height: 40vw;
   }
+
   .title {
     font-size: 5vw;
   }
-  .description {
+
+  .content {
     font-size: 3vw;
   }
 }
 
 @media (max-width: 500px) {
   .full-post_content {
-    padding: 10px 20px;
+    padding: 10px 0px;
   }
+
   .title {
     font-size: 6vw;
   }
-  .description {
+
+  .content {
     padding: 5px 10px;
     font-size: 4vw;
   }

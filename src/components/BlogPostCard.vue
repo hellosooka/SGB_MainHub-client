@@ -1,18 +1,19 @@
 <script setup>
 import { computed } from "vue";
+import { usePostsStore } from "../stores/posts";
 
 const props = defineProps({
   id: "",
   imageLink: "",
   title: "",
-  description: "",
+  content: "",
 });
 
-const compactDescription = computed(() => {
-  if (props.description.length > 800) {
-    return props.description.slice(0, 800) + "...";
+const compactContent = computed(() => {
+  if (props.content.length > 800) {
+    return props.content.slice(0, 800) + "...";
   }
-  return props.description;
+  return props.content;
 });
 
 const compactTitle = computed(() => {
@@ -29,7 +30,7 @@ const compactTitle = computed(() => {
     <div class="content_container">
       <div class="data_container">
         <span class="title"> {{ compactTitle }} </span>
-        <span class="description"> {{ compactDescription }} </span>
+        <span class="content"> {{ compactContent }} </span>
       </div>
       <div class="link_container">
         <router-link class="link" :to="`/blog/${props.id}`">
@@ -58,9 +59,10 @@ const compactTitle = computed(() => {
 .image {
   object-fit: cover;
 
-  width: 100%;
+  width: 95vw;
   height: 22.5vw;
 }
+
 .content_container {
   display: flex;
   justify-content: space-between;
@@ -79,7 +81,7 @@ const compactTitle = computed(() => {
   margin-bottom: 5px;
 }
 
-.description {
+.content {
   font-family: "St_sign normal";
   font-size: 1.4vw;
   color: gray;
@@ -91,11 +93,13 @@ const compactTitle = computed(() => {
   justify-content: flex-end;
   margin: 20px;
 }
+
 .link {
   font-size: 1.2vw;
   font-family: "St_sign normal";
   color: #1e2859;
 }
+
 .link:hover {
   text-decoration: underline;
 }
@@ -104,9 +108,11 @@ const compactTitle = computed(() => {
   .title {
     font-size: 4vw;
   }
-  .description {
+
+  .content {
     font-size: 2vw;
   }
+
   .link {
     font-size: 2vw;
   }
@@ -116,9 +122,11 @@ const compactTitle = computed(() => {
   .title {
     font-size: 5vw;
   }
+
   .description {
     font-size: 2.5vw;
   }
+
   .link {
     font-size: 2.5vw;
   }
@@ -128,9 +136,11 @@ const compactTitle = computed(() => {
   .title {
     font-size: 6vw;
   }
+
   .description {
     font-size: 3vw;
   }
+
   .link {
     font-size: 3vw;
   }
