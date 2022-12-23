@@ -32,43 +32,66 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <div class="container">
-    <span class="error_message" v-if="authStore.isError">
-      {{ authStore.errorMessage }}
-    </span>
-    <form @submit.prevent="onSubmit" class="form_container">
-      <span class="title"> Авторизация </span>
-      <label class="label" for="email"> Электронная почта </label>
-      <input v-model="email" class="input" id="email" type="email" />
-      <label class="label" for="password"> Пароль </label>
-      <input v-model="password" class="input" id="password" type="password" />
-      <button
-        :class="{ active: isActive }"
-        :disabled="!isActive"
-        class="button"
-        type="submit"
-      >
-        Войти
-      </button>
-    </form>
-    <router-link class="link" to="/registration">
-      У меня нет аккаунта
-    </router-link>
+  <div class="auth_background">
+    <div class="auth_container">
+      <span class="error_message" v-if="authStore.isError">
+        {{ authStore.errorMessage }}
+      </span>
+      <form @submit.prevent="onSubmit" class="form_container">
+        <div class="title">Авторизация</div>
+        <label class="label" for="email"> Электронная почта </label>
+        <input v-model="email" class="input" id="email" type="email" />
+        <label class="label" for="password"> Пароль </label>
+        <input v-model="password" class="input" id="password" type="password" />
+        <button
+          :class="{ active: isActive }"
+          :disabled="!isActive"
+          class="button"
+          type="submit"
+        >
+          Войти
+        </button>
+      </form>
+      <router-link class="link" to="/registration">
+        У меня нет аккаунта
+      </router-link>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.container {
+.auth_background {
+  background-color: #141414;
+}
+
+.auth_container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 30px;
+  height: 100%;
+  justify-content: center;
+
+  background: linear-gradient(
+      to right,
+      transparent 48%,
+      #555 49%,
+      #555 50%,
+      transparent 51%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 48%,
+      #555 49%,
+      #555 50%,
+      transparent 51%
+    );
+  background-size: 50px 50px;
 }
 
 .error_message {
   padding: 1vw;
   border: 2px solid #e13b37;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #f8f8f8;
   font-family: "St_sign normal";
   color: #e13b37;
@@ -78,18 +101,22 @@ const onSubmit = async () => {
 .title {
   font-size: 50px;
   font-family: "St_Sign condensed";
-  color: #1e2859;
-  margin-bottom: 5px;
+  margin-bottom: 1.5vw;
+  text-align: center;
+  padding: 1vw;
+  background-color: #fcf4df;
+  color: #aa0000;
+  border-radius: 5px;
 }
 
 .form_container {
   display: flex;
   flex-direction: column;
-  border: 2px solid #ebebeb;
-  border-radius: 15px;
+  border: 2px solid #2c2c2c;
+  border-radius: 5px;
   margin-top: 1vw;
   padding: 35px;
-  background-color: #f8f8f8;
+  background-color: #272727;
 }
 
 .label {
@@ -98,6 +125,7 @@ const onSubmit = async () => {
   margin-bottom: 3px;
   font-size: 25px;
   font-family: "St_Sign normal";
+  color: #ebebeb;
 }
 
 .input {
@@ -111,8 +139,8 @@ const onSubmit = async () => {
 .button {
   margin-top: 25px;
   font-size: 25px;
-  border-radius: 10px;
-  border: 2px solid #ebebeb;
+  border-radius: 5px;
+  border: 2px solid gray;
   padding: 8px;
   font-family: "St_Sign normal";
 
@@ -120,16 +148,16 @@ const onSubmit = async () => {
 }
 
 .active {
-  background-color: #1e2859;
+  background-color: #a83142;
   color: white;
-  border: 2px solid #1e2859;
+  border: 2px solid #8d2837;
 }
 
 .link {
   padding-top: 8px;
   font-size: 1.5vw;
   font-family: "St_Sign normal";
-  color: #1e2859;
+  color: white;
   margin-bottom: 2vw;
 }
 

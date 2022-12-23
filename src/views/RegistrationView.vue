@@ -41,49 +41,72 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <div class="container">
-    <span class="error_message" v-if="authStore.isError">
-      {{ authStore.errorMessage }}
-    </span>
-    <form
-      @submit.prevent="onSubmit"
-      class="form_container"
-      :class="{ error_contaier: authStore.isError }"
-    >
-      <span class="title"> Регистрация </span>
-      <label class="label" for="nickname"> Никнейм </label>
-      <input v-model="nickname" class="input" id="nickname" type="text" />
-      <label class="label" for="email"> Электронная почта </label>
-      <input v-model="email" class="input" id="email" type="email" />
-      <label class="label" for="password"> Пароль </label>
-      <input v-model="password" class="input" id="password" type="password" />
-      <button
-        :class="{ active: isActive }"
-        :disabled="!isActive"
-        class="button"
-        type="submit"
+  <div class="reg_background">
+    <div class="reg_container">
+      <span class="error_message" v-if="authStore.isError">
+        {{ authStore.errorMessage }}
+      </span>
+      <form
+        @submit.prevent="onSubmit"
+        class="form_container"
+        :class="{ error_contaier: authStore.isError }"
       >
-        Зарегестрироваться
-      </button>
-    </form>
-    <router-link class="link" to="/authorization">
-      Я уже зарегестрирован
-    </router-link>
+        <span class="title"> Регистрация </span>
+        <label class="label" for="nickname"> Никнейм </label>
+        <input v-model="nickname" class="input" id="nickname" type="text" />
+        <label class="label" for="email"> Электронная почта </label>
+        <input v-model="email" class="input" id="email" type="email" />
+        <label class="label" for="password"> Пароль </label>
+        <input v-model="password" class="input" id="password" type="password" />
+        <button
+          :class="{ active: isActive }"
+          :disabled="!isActive"
+          class="button"
+          type="submit"
+        >
+          Зарегестрироваться
+        </button>
+      </form>
+      <router-link class="link" to="/authorization">
+        Я уже зарегестрирован
+      </router-link>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.container {
+.reg_background {
+  background-color: #141414;
+}
+
+.reg_container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 30px;
+  height: 100%;
+  justify-content: center;
+
+  background: linear-gradient(
+      to right,
+      transparent 48%,
+      #555 49%,
+      #555 50%,
+      transparent 51%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 48%,
+      #555 49%,
+      #555 50%,
+      transparent 51%
+    );
+  background-size: 50px 50px;
 }
 
 .error_message {
   padding: 1vw;
   border: 2px solid #e13b37;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #f8f8f8;
   font-family: "St_sign normal";
   color: #e13b37;
@@ -93,19 +116,22 @@ const onSubmit = async () => {
 .title {
   font-size: 50px;
   font-family: "St_Sign condensed";
-  color: #1e2859;
+  margin-bottom: 1.5vw;
+  text-align: center;
+  padding: 1vw;
+  background-color: #fcf4df;
+  color: #3548a0;
+  border-radius: 5px;
 }
 
 .form_container {
   display: flex;
   flex-direction: column;
-  border: 2px solid #ebebeb;
-  border-radius: 15px;
-  padding: 35px;
-  background-color: #f8f8f8;
+  border: 2px solid #2c2c2c;
+  border-radius: 5px;
   margin-top: 1vw;
-
-  transition: 300ms;
+  padding: 35px;
+  background-color: #272727;
 }
 
 .label {
@@ -114,6 +140,7 @@ const onSubmit = async () => {
   margin-bottom: 3px;
   font-size: 25px;
   font-family: "St_Sign normal";
+  color: #ebebeb;
 }
 
 .input {
@@ -127,8 +154,8 @@ const onSubmit = async () => {
 .button {
   margin-top: 25px;
   font-size: 25px;
-  border-radius: 10px;
-  border: 2px solid #ebebeb;
+  border-radius: 5px;
+  border: 2px solid gray;
   padding: 8px;
   font-family: "St_Sign normal";
 
@@ -136,16 +163,16 @@ const onSubmit = async () => {
 }
 
 .active {
-  background-color: #1e2859;
+  background-color: #a83142;
   color: white;
-  border: 2px solid #1e2859;
+  border: 2px solid #8d2837;
 }
 
 .link {
   padding-top: 8px;
   font-size: 1.5vw;
   font-family: "St_Sign normal";
-  color: #1e2859;
+  color: white;
   margin-bottom: 2vw;
 }
 

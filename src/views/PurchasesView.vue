@@ -15,11 +15,12 @@ import GamesList from "../components/GamesList/GamesList.vue";
 .background {
   background-color: #141414;
 }
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.5vw;
 
   border: none;
   border-radius: 20px 20px 0px 0px;

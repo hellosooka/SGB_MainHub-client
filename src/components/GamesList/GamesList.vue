@@ -2,9 +2,11 @@
 import GamesListHeader from "./GamesListHeader.vue";
 import GameCard from "./GameCard.vue";
 import { useGamesStore } from "../../stores/games";
-import { ref, computed, watch } from "vue";
+import { ref, computed } from "vue";
+import { useAuthStore } from "../../stores/auth";
 
 const gamesStore = useGamesStore();
+const authStore = useAuthStore();
 
 const filterType = ref("");
 const changeGames = (data) => {
@@ -17,12 +19,12 @@ const searchGame = (data) => {
 };
 
 const searchedGame = computed(() => {
-  if (filterType.value == "all") {
-    return gamesStore.allGames.filter((game) =>
+  if (filterType.value == "bought") {
+    return gamesStore.userGames.filter((game) =>
       game.title.includes(searchQuery.value)
     );
   } else {
-    return gamesStore.userGames.filter((game) =>
+    return gamesStore.allGames.filter((game) =>
       game.title.includes(searchQuery.value)
     );
   }
@@ -50,16 +52,16 @@ const searchedGame = computed(() => {
         :id="game.id"
         :title="game.title"
         :description="game.description"
-        :imageLink="game.image"
+        :imageLink="`${gamesStore.HOST}/${game.image}`"
         :tags="game.tags"
         :price="game.price"
       />
     </div>
     <div
       class="ups_container"
-      v-if="filterType != 'all' && searchedGame.length == 0"
+      v-if="searchedGame.length == 0 && authStore.isRegistering"
     >
-      <span class="ups_message"> Упс! У вас пока нет ни одной игры </span>
+      <span class="ups_message"> Упс! Здесь ни одной игры </span>
     </div>
   </div>
 </template>
@@ -71,6 +73,7 @@ const searchedGame = computed(() => {
   align-items: center;
   background-color: #1c1c1c;
   width: 98%;
+  padding-bottom: 1vw;
 }
 
 .cards_container {

@@ -26,6 +26,7 @@ watch(searchQuery, (count) => {
           name="radio"
           value="all"
           v-model="filterValue"
+          checked
         />
         <label for="radio-2" v-upper-case>все</label>
       </div>
@@ -36,7 +37,6 @@ watch(searchQuery, (count) => {
           name="radio"
           value="bought"
           v-model="filterValue"
-          checked
         />
         <label for="radio-1" v-upper-case> купленные </label>
       </div>

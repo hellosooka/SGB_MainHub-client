@@ -36,7 +36,10 @@ const isBought = computed(() => {
         <span class="description"> {{ description }} </span>
       </div>
       <div class="footer_container">
-        <span v-if="!isBought" class="price"> {{ price }}р </span>
+        <span v-if="!isBought" class="price">
+          <span v-if="price != 0"> {{ price }} </span>
+          <span v-else v-upper-case class="free"> free </span>
+        </span>
         <GameButton v-if="isBought" type="play"> Играть </GameButton>
         <GameButton v-else type="buy">
           <router-link :to="`/games/${id}`"> Купить </router-link>
@@ -54,10 +57,12 @@ const isBought = computed(() => {
   background-color: #2c2c2c;
   border: 4px solid black;
 
-  transition: 200ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: 100ms;
 }
 
-.card_container:hover {}
+.card_container:hover {
+  border: 4px solid #434343;
+}
 
 .image {
   object-fit: cover;
@@ -139,6 +144,10 @@ const isBought = computed(() => {
     grid-template-rows: 1fr 1.5fr;
     row-gap: 10px;
   }
+}
+
+.free {
+  color: #f6c453;
 }
 
 @media (max-width: 650px) {

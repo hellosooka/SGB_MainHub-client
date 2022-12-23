@@ -56,7 +56,12 @@ function getRandomIntInclusive(min, max) {
       </div>
       <button class="game-functions_button">
         <span v-if="isBought"> Играть </span>
-        <span v-else> Купить </span>
+        <span v-else>
+          <span v-if="gameData.price != 0">
+            Купить за {{ gameData.price }}р
+          </span>
+          <span class="free" v-else> Получить </span>
+        </span>
       </button>
     </div>
   </div>
@@ -75,6 +80,10 @@ function getRandomIntInclusive(min, max) {
   height: 5px;
   width: 99%;
   border: none;
+}
+
+.free {
+  font-size: 3.7vw;
 }
 
 .game-description_container {
@@ -156,21 +165,26 @@ function getRandomIntInclusive(min, max) {
 
 .game-functions_button {
   position: fixed;
-  right: 3vw;
-  bottom: 3vw;
+  right: 2vw;
+  bottom: 2vw;
   font-family: "St_sign normal";
-  font-size: 3.5vw;
-  padding: 1vw 3vw;
+  font-size: 3vw;
+  padding: 1vw 2vw;
   box-shadow: 10px 10px black;
   border: 4px solid black;
   background-color: #760000;
   color: white;
 
-  transition: 200ms cubic-bezier(1, 0, 0, 1);
+  transition: 200ms;
 }
 
 .game-functions_button:hover {
   background-color: #8d2837;
+}
+
+.game-functions_button:active {
+  box-shadow: 0px 0px black;
+  transform: translate(10px, 10px);
 }
 
 @media (max-width: 820px) {
