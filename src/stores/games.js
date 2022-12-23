@@ -1,192 +1,34 @@
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { defineStore } from "pinia";
+import axios from "axios";
+import { useAuthStore } from "./auth";
+import localforage from "localforage";
 
 export const useGamesStore = defineStore("games", () => {
-  const allGames = ref([
-    {
-      id: 1,
-      title: "GameOne",
-      description: "some description",
-      image: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
-      price: 100,
-      link: "some link",
-      createdAt: "2022-12-12T10:31:15.285Z",
-      updatedAt: "2022-12-12T10:31:15.285Z",
-      tags: [
-        {
-          id: 4,
-          title: "test",
-          createdAt: "2022-12-12T10:34:55.679Z",
-          updatedAt: "2022-12-12T10:34:55.679Z",
-          GameTags: {
-            id: 1,
-            gameId: 1,
-            tagId: 4,
-          },
-        },
-        {
-          id: 1,
-          title: "free",
-          createdAt: "2022-12-12T10:34:37.673Z",
-          updatedAt: "2022-12-12T10:34:37.673Z",
-          GameTags: {
-            id: 2,
-            gameId: 1,
-            tagId: 1,
-          },
-        },
-        {
-          id: 1,
-          title: "free",
-          createdAt: "2022-12-12T10:34:37.673Z",
-          updatedAt: "2022-12-12T10:34:37.673Z",
-          GameTags: {
-            id: 2,
-            gameId: 1,
-            tagId: 1,
-          },
-        },
-        {
-          id: 1,
-          title: "taaags",
-          createdAt: "2022-12-12T10:34:37.673Z",
-          updatedAt: "2022-12-12T10:34:37.673Z",
-          GameTags: {
-            id: 2,
-            gameId: 1,
-            tagId: 1,
-          },
-        },
-        {
-          id: 1,
-          title: "more tags",
-          createdAt: "2022-12-12T10:34:37.673Z",
-          updatedAt: "2022-12-12T10:34:37.673Z",
-          GameTags: {
-            id: 2,
-            gameId: 1,
-            tagId: 1,
-          },
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "GameTwo",
-      description: "some description",
-      image: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
-      price: 200,
-      link: "some link",
-      createdAt: "2022-12-12T10:31:29.607Z",
-      updatedAt: "2022-12-12T10:31:29.607Z",
-      tags: [
-        {
-          id: 3,
-          title: "mind",
-          createdAt: "2022-12-12T10:34:49.658Z",
-          updatedAt: "2022-12-12T10:34:49.658Z",
-          GameTags: {
-            id: 3,
-            gameId: 2,
-            tagId: 3,
-          },
-        },
-        {
-          id: 2,
-          title: "16+",
-          createdAt: "2022-12-12T10:34:43.925Z",
-          updatedAt: "2022-12-12T10:34:43.925Z",
-          GameTags: {
-            id: 4,
-            gameId: 2,
-            tagId: 2,
-          },
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "GameThree",
-      description: "some description",
-      image: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
-      price: 300,
-      link: "some link",
-      createdAt: "2022-12-12T10:31:36.049Z",
-      updatedAt: "2022-12-12T10:31:36.049Z",
-      tags: [],
-    },
-  ]);
+  const HOST = ref("http://45.80.68.47:7000");
 
-  const userGames = ref([
-    {
-      id: 2,
-      title: "GameTwo",
-      description: "some description",
-      image: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
-      price: 200,
-      link: "some link",
-      createdAt: "2022-12-12T10:31:29.607Z",
-      updatedAt: "2022-12-12T10:31:29.607Z",
-      tags: [
-        {
-          id: 3,
-          title: "mind",
-          createdAt: "2022-12-12T10:34:49.658Z",
-          updatedAt: "2022-12-12T10:34:49.658Z",
-          GameTags: {
-            id: 3,
-            gameId: 2,
-            tagId: 3,
-          },
-        },
-        {
-          id: 2,
-          title: "16+",
-          createdAt: "2022-12-12T10:34:43.925Z",
-          updatedAt: "2022-12-12T10:34:43.925Z",
-          GameTags: {
-            id: 4,
-            gameId: 2,
-            tagId: 2,
-          },
-        },
-        {
-          id: 8,
-          title: "log",
-          createdAt: "2022-12-12T10:34:43.925Z",
-          updatedAt: "2022-12-12T10:34:43.925Z",
-          GameTags: {
-            id: 4,
-            gameId: 2,
-            tagId: 2,
-          },
-        },
+  const allGames = ref([]);
+  const userGames = ref([]);
 
-        {
-          id: 9,
-          title: "logfg",
-          createdAt: "2022-12-12T10:34:43.925Z",
-          updatedAt: "2022-12-12T10:34:43.925Z",
-          GameTags: {
-            id: 4,
-            gameId: 2,
-            tagId: 2,
-          },
+  onMounted(async () => {
+    await getAllGames();
+  });
+
+  async function getAllGames() {
+    try {
+      const response = await axios.get(`${HOST.value}/games`, {
+        headers: {
+          Authorization: `Bearer ${await localforage.getItem("token")}`,
         },
-      ],
-    },
-    {
-      id: 3,
-      title: "GameThree",
-      description: "some description",
-      image: " https://rgrfacilities.co.uk/gallery/blog/8278044.jpg ",
-      price: 300,
-      link: "some link",
-      createdAt: "2022-12-12T10:31:36.049Z",
-      updatedAt: "2022-12-12T10:31:36.049Z",
-      tags: [],
-    },
-  ]);
+      });
+
+      allGames.value.push(...response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function getUserGames() { }
 
   function getGameById(id) {
     return allGames.value.find((game) => game.id == id);
@@ -196,5 +38,5 @@ export const useGamesStore = defineStore("games", () => {
     return userGames.value.find((game) => game.id == id);
   }
 
-  return { allGames, userGames, getGameById, getUserGameById };
+  return { allGames, userGames, getGameById, getUserGameById, HOST };
 });

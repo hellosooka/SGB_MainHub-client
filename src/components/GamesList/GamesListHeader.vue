@@ -21,6 +21,16 @@ watch(searchQuery, (count) => {
     <div class="button_container">
       <div class="form_radio_btn">
         <input
+          id="radio-2"
+          type="radio"
+          name="radio"
+          value="all"
+          v-model="filterValue"
+        />
+        <label for="radio-2" v-upper-case>все</label>
+      </div>
+      <div class="form_radio_btn">
+        <input
           id="radio-1"
           type="radio"
           name="radio"
@@ -29,17 +39,6 @@ watch(searchQuery, (count) => {
           checked
         />
         <label for="radio-1" v-upper-case> купленные </label>
-      </div>
-
-      <div class="form_radio_btn">
-        <input
-          id="radio-2"
-          type="radio"
-          name="radio"
-          value="all"
-          v-model="filterValue"
-        />
-        <label for="radio-2" v-upper-case>все</label>
       </div>
     </div>
   </div>
@@ -72,13 +71,21 @@ watch(searchQuery, (count) => {
   padding-top: 1vw;
 }
 
+.button_container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
+}
+
 .form_radio_btn {
   display: inline-block;
   margin-right: 10px;
 }
+
 .form_radio_btn input[type="radio"] {
   display: none;
 }
+
 .form_radio_btn label {
   display: inline-block;
   cursor: pointer;
@@ -151,6 +158,7 @@ watch(searchQuery, (count) => {
     margin-bottom: 5vw;
     margin-top: 5vw;
   }
+
   .header {
     flex-direction: column;
     justify-content: center;
@@ -158,6 +166,7 @@ watch(searchQuery, (count) => {
     padding: 5vw 0px 1vw 0px;
     margin-bottom: 0.5vw;
   }
+
   .search_input {
     font-size: 20px;
   }
@@ -166,6 +175,7 @@ watch(searchQuery, (count) => {
     font-size: 22px;
     line-height: 26px;
   }
+
   .line {
     display: none;
   }

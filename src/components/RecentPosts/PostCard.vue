@@ -46,10 +46,12 @@ const compactTitle = computed(() => {
   background-color: #1c1c1c;
   border: 3px solid #2c2c2c;
   height: 100%;
+
+  transition: 200ms;
 }
 
 .container:hover {
-  text-decoration: underline;
+  border: 4px solid #434343;
 }
 
 .image {

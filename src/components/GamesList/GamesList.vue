@@ -2,7 +2,7 @@
 import GamesListHeader from "./GamesListHeader.vue";
 import GameCard from "./GameCard.vue";
 import { useGamesStore } from "../../stores/games";
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 
 const gamesStore = useGamesStore();
 
@@ -40,7 +40,7 @@ const searchedGame = computed(() => {
         :id="game.id"
         :title="game.title"
         :description="game.description"
-        :imageLink="game.image"
+        :imageLink="`${gamesStore.HOST}/${game.image}`"
         :tags="game.tags"
         :price="game.price"
       />
@@ -54,6 +54,12 @@ const searchedGame = computed(() => {
         :tags="game.tags"
         :price="game.price"
       />
+    </div>
+    <div
+      class="ups_container"
+      v-if="filterType != 'all' && searchedGame.length == 0"
+    >
+      <span class="ups_message"> Упс! У вас пока нет ни одной игры </span>
     </div>
   </div>
 </template>
@@ -70,5 +76,18 @@ const searchedGame = computed(() => {
 .cards_container {
   width: 97%;
   align-items: center;
+}
+
+.ups_container {
+  padding: 3vw;
+}
+
+.ups_message {
+  font-family: "St_sign condensed";
+  font-size: 3.5vw;
+  padding: 1vw;
+  background-color: #fcf4df;
+  color: #434343;
+  border: 4px solid #a83142;
 }
 </style>

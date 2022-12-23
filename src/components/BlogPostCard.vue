@@ -60,7 +60,7 @@ const compactTitle = computed(() => {
   object-fit: cover;
 
   width: 95vw;
-  height: 22.5vw;
+  height: 30vw;
 }
 
 .content_container {

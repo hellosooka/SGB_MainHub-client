@@ -45,7 +45,11 @@ const onSubmit = async () => {
     <span class="error_message" v-if="authStore.isError">
       {{ authStore.errorMessage }}
     </span>
-    <form @submit.prevent="onSubmit" class="form_container" :class="{ error_contaier: authStore.isError }">
+    <form
+      @submit.prevent="onSubmit"
+      class="form_container"
+      :class="{ error_contaier: authStore.isError }"
+    >
       <span class="title"> Регистрация </span>
       <label class="label" for="nickname"> Никнейм </label>
       <input v-model="nickname" class="input" id="nickname" type="text" />
@@ -53,7 +57,12 @@ const onSubmit = async () => {
       <input v-model="email" class="input" id="email" type="email" />
       <label class="label" for="password"> Пароль </label>
       <input v-model="password" class="input" id="password" type="password" />
-      <button :class="{ active: isActive }" :disabled="!isActive" class="button" type="submit">
+      <button
+        :class="{ active: isActive }"
+        :disabled="!isActive"
+        class="button"
+        type="submit"
+      >
         Зарегестрироваться
       </button>
     </form>
@@ -134,7 +143,7 @@ const onSubmit = async () => {
 
 .link {
   padding-top: 8px;
-  font-size: 18px;
+  font-size: 1.5vw;
   font-family: "St_Sign normal";
   color: #1e2859;
   margin-bottom: 2vw;
@@ -142,6 +151,12 @@ const onSubmit = async () => {
 
 .link:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 1000px) {
+  .link {
+    font-size: 2.5vw;
+  }
 }
 
 @media (max-width: 600px) {
@@ -165,6 +180,10 @@ const onSubmit = async () => {
 
   .form_container {
     width: 80vw;
+  }
+
+  .link {
+    font-size: 4vw;
   }
 }
 </style>

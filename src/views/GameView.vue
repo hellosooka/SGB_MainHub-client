@@ -29,9 +29,14 @@ function getRandomIntInclusive(min, max) {
 <template>
   <div class="game-view_container">
     <div class="game-description_container">
-      <img class="game-view_image" :src="gameData.image" alt="" />
+      <img
+        class="game-view_image"
+        :src="`${gamesStore.HOST}/${gameData.image}`"
+        alt=""
+      />
       <div class="game-view_about_container">
         <div class="game-view_title">{{ gameData.title }}</div>
+        <hr class="line" />
         <div class="game-view_description">{{ gameData.description }}</div>
       </div>
     </div>
@@ -65,6 +70,13 @@ function getRandomIntInclusive(min, max) {
   padding: 15px;
 }
 
+.line {
+  background-color: white;
+  height: 5px;
+  width: 99%;
+  border: none;
+}
+
 .game-description_container {
   display: flex;
   flex-direction: column;
@@ -93,7 +105,7 @@ function getRandomIntInclusive(min, max) {
   font-family: "St_sign normal";
   color: #ebebeb;
   font-size: 2vw;
-  padding: 0px 1vw 4vw 1vw;
+  padding: 1vw 1vw 4vw 1vw;
 }
 
 .game-functions_container {
@@ -105,6 +117,7 @@ function getRandomIntInclusive(min, max) {
   padding: 0.5vw;
   margin-top: -10px;
 }
+
 .game-functions_tag {
   font-family: "St_sign normal";
   font-size: 2vw;
@@ -164,16 +177,26 @@ function getRandomIntInclusive(min, max) {
   .game-view_container {
     grid-template-columns: 1fr;
   }
+
   .game-view_title {
+    padding-top: 1.5vw;
     font-size: 10vw;
   }
+
+  .line {
+    height: 2px;
+  }
+
   .game-view_description {
     font-size: 3.5vw;
+    margin-bottom: 3vw;
   }
+
   .game-functions_button {
     box-shadow: 5px 5px black;
     font-size: 6vw;
   }
+
   .game-functions_tag {
     font-size: 3.5vw;
   }
@@ -183,13 +206,16 @@ function getRandomIntInclusive(min, max) {
   .game-view_title {
     font-size: 15vw;
   }
+
   .game-view_description {
     font-size: 4vw;
   }
+
   .game-functions_button {
     box-shadow: 5px 5px black;
     font-size: 8vw;
   }
+
   .game-functions_tag {
     font-size: 4vw;
   }

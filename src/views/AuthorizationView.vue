@@ -127,7 +127,7 @@ const onSubmit = async () => {
 
 .link {
   padding-top: 8px;
-  font-size: 18px;
+  font-size: 1.5vw;
   font-family: "St_Sign normal";
   color: #1e2859;
   margin-bottom: 2vw;
@@ -135,6 +135,12 @@ const onSubmit = async () => {
 
 .link:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 1000px) {
+  .link {
+    font-size: 2.5vw;
+  }
 }
 
 @media (max-width: 600px) {
@@ -158,6 +164,10 @@ const onSubmit = async () => {
 
   .form_container {
     width: 80vw;
+  }
+
+  .link {
+    font-size: 4vw;
   }
 }
 </style>
