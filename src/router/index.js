@@ -9,6 +9,8 @@ import BlogView from "../views/BlogView.vue";
 import PostView from "../views/PostView.vue";
 import GameView from "../views/GameView.vue";
 import CongrutilationsView from "../views/Congrutilations.vue";
+import AboutUsView from "../views/AboutUsView.vue";
+import SupportView from "../views/SupportView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,6 +64,16 @@ const router = createRouter({
       path: "/blog/:post",
       name: "post",
       component: PostView,
+    },
+    {
+      path: "/about-us",
+      name: "about-us",
+      component: AboutUsView,
+    },
+    {
+      path: "/support",
+      name: "support",
+      component: SupportView,
     },
   ],
 });

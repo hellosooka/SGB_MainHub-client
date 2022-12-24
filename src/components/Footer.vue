@@ -3,8 +3,12 @@
 <template>
   <footer class="container">
     <div class="links">
-      <router-link to="" v-upper-case class="link"> О НАС </router-link>
-      <router-link to="" v-upper-case class="link"> Поддержка </router-link>
+      <router-link to="/about-us" v-upper-case class="link">
+        О НАС
+      </router-link>
+      <router-link to="/support" v-upper-case class="link">
+        Поддержка
+      </router-link>
       <router-link to="/blog" v-upper-case class="link"> блог </router-link>
     </div>
   </footer>
@@ -56,6 +60,7 @@
     justify-content: left;
     height: 200px;
   }
+
   .links {
     flex-direction: column;
     row-gap: 30px;

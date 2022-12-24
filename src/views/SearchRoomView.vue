@@ -1,93 +1,60 @@
 <script setup>
 import { computed, ref } from "vue";
-import { useAuthStore } from "../stores/auth";
-import axios from "axios";
+import { useRoomStore } from "../stores/room";
 
 const nickname = ref("");
 const code = ref("");
-const isError = ref(false);
-const errorMessage = ref("");
 
 const isActive = computed(() => {
   if (nickname.value.trim() == "" || code.value.trim() == "") {
-    isError.value = false;
+    roomStore.isError = false;
     return false;
   } else {
     return true;
   }
 });
 
-const authStore = useAuthStore();
+const roomStore = useRoomStore();
 
 const onSubmit = async () => {
-  const room = await getRoomByRoomCode();
-  if (room) {
-    const userRoom = await addUserToRoom(room.id);
-    if (userRoom) {
-      await redirectToGame(userRoom.game.link, userRoom.roomCode);
-    }
-  }
-};
-
-const getRoomByRoomCode = async () => {
-  try {
-    const response = await axios.get(
-      `http://45.80.68.47:5000/room/${code.value}/byRoomCode`
-    );
-    isError.value = false;
-    return response.data;
-  } catch (e) {
-    isError.value = true;
-    errorMessage.value = e.response.data.message;
-    return false;
-  }
-};
-
-const addUserToRoom = async (roomId) => {
-  try {
-    const response = await axios.post(
-      `http://45.80.68.47:5000/room/add-client/${roomId}`,
-      {
-        login: authStore.nickname,
-        nickname: nickname.value,
-      }
-    );
-    isError.value = false;
-    return response.data;
-  } catch (e) {
-    isError.value = true;
-    errorMessage.value = e.response.data.message;
-    return false;
-  }
-};
-
-const redirectToGame = async (gameLink, roomCode) => {
-  window.location.href = `${gameLink}/room/${roomCode}`;
+  await roomStore.connectToRoom(nickname, code);
 };
 </script>
 
 <template>
-  <div class="container">
-    <form @submit.prevent="onSubmit" class="form_container">
-      <span class="error_message" v-if="isError"> {{ errorMessage }} </span>
+  <div class="room_background">
+    <div class="room_container">
+      <form @submit.prevent="onSubmit" class="form_container">
+        <span class="error_message" v-if="roomStore.isError">
+          {{ roomStore.errorMessage }}
+        </span>
 
-      <label for="nickname" class="label" v-upper-case> Имя </label>
-      <input v-model="nickname" id="nickname" class="input" type="text" />
-      <label for="code" class="label" v-upper-case> Код комнаты </label>
-      <input v-model="code" id="code" class="input" type="text" />
-      <button :disabled="!isActive" :class="{ active: isActive }" class="button" type="submit">
-        Играть
-      </button>
-    </form>
+        <label for="nickname" class="label" v-upper-case> Имя </label>
+        <input v-model="nickname" id="nickname" class="input" type="text" />
+        <label for="code" class="label" v-upper-case> Код комнаты </label>
+        <input v-model="code" id="code" class="input" type="text" />
+        <button
+          :disabled="!isActive"
+          :class="{ active: isActive }"
+          class="button"
+          type="submit"
+        >
+          Играть
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.container {
+.room_background {
+  background-color: #141414;
+}
+
+.room_container {
   display: flex;
   justify-content: center;
-  background-color: #141414;
-  padding-bottom: 50px;
+  height: 100%;
 }
 
 .form_container {

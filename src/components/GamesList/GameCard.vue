@@ -37,7 +37,7 @@ const isBought = computed(() => {
       </div>
       <div class="footer_container">
         <span v-if="!isBought" class="price">
-          <span v-if="price != 0"> {{ price }} </span>
+          <span v-if="price != 0"> {{ price }}р </span>
           <span v-else v-upper-case class="free"> free </span>
         </span>
         <GameButton v-if="isBought" type="play"> Играть </GameButton>

@@ -112,7 +112,7 @@ const onSubmit = async () => {
 .form_container {
   display: flex;
   flex-direction: column;
-  border: 2px solid #2c2c2c;
+  border: 3px solid #2c2c2c;
   border-radius: 5px;
   margin-top: 1vw;
   padding: 35px;

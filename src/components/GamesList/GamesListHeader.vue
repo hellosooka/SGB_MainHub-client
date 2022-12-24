@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
+import { useAuthStore } from "../../stores/auth";
+
+const authStore = useAuthStore();
 
 const emit = defineEmits(["filter", "search"]);
 
@@ -18,7 +21,7 @@ watch(searchQuery, (count) => {
 <template>
   <div class="header">
     <span v-upper-case class="title"> все игры </span>
-    <div class="button_container">
+    <div v-if="authStore.isRegistering" class="button_container">
       <div class="form_radio_btn">
         <input
           id="radio-2"
